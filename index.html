@@ -1318,6 +1318,53 @@
         body.readonly select { pointer-events: none; }
         body.readonly input[type="file"] { pointer-events: none; }
         body.readonly .avatar-box { pointer-events: none; }
+        /* ========== 个人历程新样式 ========== */
+        .journey-search-box { position: relative; margin-left: auto; }
+        .journey-search-box input { width: 200px; padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px; background: rgba(255,255,255,0.7); font-size: 13px; color: var(--ink); }
+        .journey-search-box input:focus { outline: none; border-color: var(--celadon); box-shadow: 0 0 0 3px rgba(122,158,143,0.15); }
+        .journey-search-dropdown { position: absolute; top: 100%; right: 0; margin-top: 4px; background: #fff; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 16px rgba(90,70,40,0.15); max-height: 280px; overflow-y: auto; z-index: 100; display: none; min-width: 200px; }
+        .journey-search-dropdown.show { display: block; }
+        .journey-search-item { padding: 8px 14px; cursor: pointer; font-size: 13px; color: var(--ink); border-bottom: 1px solid #f0e8d8; display: flex; justify-content: space-between; align-items: center; }
+        .journey-search-item:hover { background: var(--paper-deep); }
+        .journey-search-item .rank-tag { font-size: 11px; color: var(--gold); }
+        .journey-lady-header { display: flex; align-items: center; gap: 28px; padding: 24px 28px; background: linear-gradient(135deg, rgba(184,153,104,0.08), rgba(122,158,143,0.06)); border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(201,184,150,0.3); }
+        .journey-name-circle { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--cinnabar), #8a3a30); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(168,72,60,0.3); flex-shrink: 0; border: 3px solid var(--gold); }
+        .journey-name-circle span { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 2px; font-family: "Noto Serif SC", serif; }
+        .journey-lady-meta { flex: 1; }
+        .journey-meta-row { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 6px; font-size: 13px; }
+        .journey-meta-label { color: var(--ink-light); font-size: 12px; }
+        .journey-meta-val { color: var(--ink); font-weight: 600; }
+        .journey-attrs-row { margin-top: 8px; gap: 14px; }
+        .journey-attr { display: inline-flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.6); padding: 4px 12px; border-radius: 6px; border: 1px solid rgba(201,184,150,0.3); }
+        .journey-attr-label { font-size: 10px; color: var(--ink-light); }
+        .journey-attr-val { font-size: 16px; font-weight: 700; color: var(--cinnabar); }
+        /* 关系图谱 */
+        .relation-graph { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; }
+        .relation-group { flex: 1; min-width: 140px; background: rgba(255,255,255,0.5); border-radius: 8px; padding: 12px 14px; border: 1px solid rgba(201,184,150,0.25); }
+        .relation-group-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .relation-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .relation-names { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+        .relation-name { font-size: 12px; color: var(--ink); background: rgba(255,255,255,0.8); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(201,184,150,0.3); }
+        /* 戏录时间线 */
+        .rp-timeline { margin-top: 12px; position: relative; padding-left: 24px; }
+        .rp-timeline::before { content: ""; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(to bottom, var(--gold), var(--celadon)); }
+        .rp-timeline-item { position: relative; margin-bottom: 16px; background: rgba(255,255,255,0.6); border-radius: 8px; padding: 12px 16px; border: 1px solid rgba(201,184,150,0.25); }
+        .rp-timeline-item::before { content: ""; position: absolute; left: -21px; top: 16px; width: 12px; height: 12px; border-radius: 50%; background: var(--cinnabar); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--cinnabar); }
+        .rp-tl-time { font-size: 12px; color: var(--cinnabar); font-weight: 700; margin-bottom: 4px; }
+        .rp-tl-meta { font-size: 12px; color: var(--ink-light); margin-bottom: 6px; display: flex; gap: 12px; flex-wrap: wrap; }
+        .rp-tl-meta span { background: rgba(184,153,104,0.1); padding: 1px 8px; border-radius: 3px; }
+        .rp-tl-quote { font-size: 13px; color: var(--ink); line-height: 1.8; font-style: italic; border-left: 3px solid var(--gold); padding-left: 10px; margin-top: 6px; }
+        .rp-tl-content { font-size: 12px; color: var(--ink-light); margin-top: 6px; line-height: 1.7; max-height: 60px; overflow: hidden; position: relative; }
+        /* 上传区域 */
+        .upload-area { border: 2px dashed var(--border); border-radius: 10px; padding: 32px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.4); }
+        .upload-area:hover { border-color: var(--celadon); background: rgba(122,158,143,0.05); }
+        /* 戏录结算 */
+        .rp-settlement-total { margin-top: 12px; padding: 12px 16px; background: linear-gradient(135deg, rgba(168,72,60,0.08), rgba(184,153,104,0.08)); border-radius: 8px; font-size: 14px; display: flex; gap: 24px; flex-wrap: wrap; }
+        .rp-settlement-total .total-item { display: flex; align-items: center; gap: 6px; }
+        .rp-settlement-total .total-label { color: var(--ink-light); font-size: 12px; }
+        .rp-settlement-total .total-val { color: var(--cinnabar); font-weight: 700; font-size: 18px; }
+        .settle-type-dui { color: var(--celadon-deep); font-weight: 600; }
+        .settle-type-zi { color: var(--gold); font-weight: 600; }
     </style>
 <style>.archive-bar{display:none !important;}</style>
 </head>
@@ -1327,7 +1374,7 @@
 /* ===== 由 sync.js 自动注入的同步数据 ===== */
 (function(){
   var __ARCHIVE__ = {"concubine":[{"name":"苏若仪","age":"28","birth":"元康二年三月","inDate":"景和元年春","title":"宸","rank":"皇后","family":"太傅之女（正一品）","beauty":9,"talent":12,"physical":"6","sleep":13,"favor":8,"prestige":"9","princess":"1","prince":"1","cumSleep":13,"intro":"（示例档案）累世清贵的苏家长女，自幼受家学熏陶，熟读诗书，性端方持重，于后位之上不怒自威。看似温婉，实则心中自有丘壑，深谙制衡之道。","relations":[{"target":"柳含烟","kind":"同盟","note":"（示例）同为制衡后宫的盟友，彼此心照不宣"}],"rpRecords":[{"time":"景和二年","target":"柳含烟","kind":"同盟","content":"与柳贵妃联手压下后宫流言。"}],"rplog":"景和二年，与柳含烟同盟，与柳贵妃联手压下后宫流言。","lineage":"嫡","familyTree":[{"name":"苏叔明","relation":"父亲","age":48,"personality":"端方","industry":18000,"marital":"已婚","spouse":"陈氏","health":95},{"name":"苏萱","relation":"嫡姐","age":26,"personality":"刻薄","industry":6167,"marital":"已婚","spouse":"朱氏","health":86},{"name":"周氏","relation":"姨娘","age":35,"personality":"刻薄","industry":2550,"marital":"已婚","spouse":"苏叔明","health":95},{"name":"陈氏","relation":"母亲（正室）","age":33,"personality":"从容","industry":3191,"marital":"已婚","spouse":"苏叔明","health":75}],"fatherMerit":0,"fatherSuppressed":false,"moral":0},{"name":"柳含烟","age":"25","birth":"元康五年八月","inDate":"景和二年秋","title":"惠","rank":"贵妃","family":"吏部尚书之女（正三品）","beauty":11,"talent":8,"physical":"6","sleep":"18","favor":10,"prestige":7,"princess":"0","prince":"1","cumSleep":18,"intro":"（示例档案）吏部柳尚书嫡女，八面玲珑，最擅揣摩圣意，恩宠正隆。面上温顺恭谨，内里心机深沉，尤善借刀杀人。","relations":[{"target":"苏若仪","kind":"同盟","note":"（示例）表面同盟，实各怀心思"},{"target":"温如玉","kind":"情敌","note":"（示例）同争恩宠，互有龃龉"}],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":19,"fatherSuppressed":false,"moral":1},{"name":"温如玉","age":"23","birth":"元康七年六月","inDate":"景和三年春","title":"德","rank":"妃","family":"骠骑大将军之女（从一品）","beauty":11,"talent":10,"physical":"6","sleep":"8","favor":6,"prestige":9,"princess":"1","prince":"0","cumSleep":8,"intro":"（示例档案）将门虎女，性爽朗明快，善骑射，不拘小节。于宫中最是护短，也最是记仇。","relations":[{"target":"秦照影","kind":"主仆","note":"（示例）秦贵人依附温妃行事"}],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":0,"fatherSuppressed":false,"moral":0},{"name":"贺兰月","age":"20","birth":"元康十年正月","inDate":"景和三年秋","title":"贤","rank":"嫔","family":"翰林学士之女（正四品）","beauty":8,"talent":9,"physical":"6","sleep":"6","favor":6,"prestige":4,"princess":"0","prince":"0","cumSleep":6,"intro":"（示例档案）翰林贺兰学士之女，清冷孤高，擅丹青翰墨，不屑结党，以才学自恃。","relations":[],"rpRecords":[],"rplog":"","lineage":"庶","familyTree":[],"fatherMerit":0,"fatherSuppressed":false},{"name":"秦照影","age":"19","birth":"元康十一年十一月","inDate":"景和三年秋","title":"","rank":"贵人","family":"通判之女（从六品）","beauty":8,"talent":5,"physical":"6","sleep":"3","favor":3,"prestige":"2","princess":"0","prince":"0","cumSleep":3,"intro":"（示例档案）江南通判之女，小家碧玉，性怯懦，无依无靠，只求在深宫自保。","relations":[{"target":"温如玉","kind":"依附","note":"（示例）依附温妃庇护"}],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":0,"fatherSuppressed":false,"moral":0},{"name":"陆知薇","age":"17","birth":"元康十三年四月","inDate":"景和四年春","title":"","rank":"才人","family":"知县之女（正七品）","beauty":5,"talent":7,"physical":"6","sleep":3,"favor":3,"prestige":1,"princess":"0","prince":"0","cumSleep":3,"intro":"（示例档案）小县官宦之女，貌美而无依，初入宫门，天真未褪，尚未卷入纷争。","relations":[],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":17,"fatherSuppressed":false},{"name":"姜晚晴","age":"16","birth":"元康十四年九月","inDate":"景和四年秋","title":"","rank":"答应","family":"太常博士之女（从七品）","beauty":10,"talent":3,"physical":"6","sleep":1,"favor":5,"prestige":0,"princess":"0","prince":"0","cumSleep":1,"intro":"（示例档案）末等小官之女，天真烂漫，不谙世事，入宫不过数月。","relations":[],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":17,"fatherSuppressed":false,"moral":5},{"name":"杨欣","age":"","birth":"","inDate":"","title":"","rank":"答应","family":"商贾之女","lineage":"庶","beauty":0,"talent":7,"physical":6,"sleep":"0","favor":3,"prestige":1,"princess":"","prince":"","intro":"","relations":[],"rpRecords":[],"rplog":"","cumSleep":0,"familyTree":[],"fatherMerit":"","fatherSuppressed":false}],"official":[{"post":"太傅","rank":"正一品","duty":"训导辅弼天子","concubineName":"苏若仪","family":"太傅之女（正一品）","fatherName":"苏叔明","status":"在朝"},{"post":"吏部尚书","rank":"正三品","duty":"掌文官铨选考课","concubineName":"柳含烟","family":"吏部尚书之女（正三品）","fatherName":"柳耀祖","status":"在朝"},{"post":"骠骑大将军","rank":"从一品","duty":"总领禁军、主掌征伐","concubineName":"温如玉","family":"骠骑大将军之女（从一品）","fatherName":"温凤鸣","status":"在朝"},{"post":"翰林学士","rank":"正四品","duty":"掌内廷制诰","concubineName":"贺兰月","family":"翰林学士之女（正四品）","fatherName":"贺崇礼","status":"在朝"},{"post":"通判","rank":"从六品","duty":"监督州务、勾稽钱谷","concubineName":"秦照影","family":"通判之女（从六品）","fatherName":"秦继宗","status":"在朝"},{"post":"知县","rank":"正七品","duty":"掌一县民政赋役刑狱","concubineName":"陆知薇","family":"知县之女（正七品）","fatherName":"陆思齐","status":"在朝"},{"post":"太常博士","rank":"从七品","duty":"掌礼乐谥法礼仪","concubineName":"姜晚晴","family":"太常博士之女（从七品）","fatherName":"姜景恒","status":"在朝"},{"post":"","rank":"","duty":"","concubineName":"杨欣","family":"商贾之女","fatherName":"杨伯钧","status":"在朝"}],"pregnancy":[{"id":"p_1788687187869_655","concubineIdx":0,"concubineName":"苏若仪","conceiveDate":"弘昼元年 · 七月 · 上旬","conceiveTime":"弘昼元年 · 七月 · 上旬","birthDate":"","gender":"","health":100,"dueXun":0,"status":"怀孕中","note":"自然怀孕（累计寝数达 6）"}],"history":[],"scene":[{"id":"s_1788675051241","time":"弘昼元年 · 七月 · 上旬","name":"御花园","type":"花园","status":"开放","people":"","desc":"12","nodes":"12","ladyIdx":5,"ladyName":"陆知薇","gains":{"beauty":0,"talent":1,"favor":0,"prestige":0},"sleepHit":true},{"id":"s_1788675084134","time":"弘昼元年 · 七月 · 上旬","name":"未央宫","type":"宫殿","status":"开放","people":"","desc":"34","nodes":"43","ladyIdx":5,"ladyName":"陆知薇","gains":{"beauty":0,"talent":0,"favor":2,"prestige":0},"sleepHit":true},{"id":"s_1788687187869","time":"弘昼元年 · 七月 · 上旬","name":"御花园","place":"御花园","type":"宫殿","status":"开放","people":"","desc":"","nodes":"","ladyIdx":0,"ladyName":"苏若仪","gains":{"beauty":0,"talent":3,"favor":0,"moral":0},"sleepHit":true},{"id":"s_1788697505755","time":"弘昼元年 · 七月 · 上旬","name":"12","place":"御花园","type":"宫殿","status":"开放","people":"","desc":"","nodes":"","ladyIdx":2,"ladyName":"温如玉","gains":{"beauty":4,"talent":0,"favor":0,"moral":0},"sleepHit":false}],"adventure":[{"id":"a_1788675285566","time":"弘昼元年 · 七月 · 上旬","place":"太庙","type":"偶遇","result":"好感","detail":"太庙祭祀毕，于廊下遇贺兰月虔诚祈愿，见她眼角微红，便轻声宽慰几句。","ladyIdx":2,"ladyName":"温如玉","eventKind":"good","gains":{"beauty":0,"talent":5,"favor":0,"prestige":0},"extraGains":{"beauty":3,"talent":0,"favor":0,"prestige":0},"lady2Name":"柳含烟","sleepHit":false},{"id":"a_1788675307869","time":"弘昼元年 · 七月 · 上旬","place":"上林苑","type":"得宝","result":"物品","detail":"上林苑猎苑草丛中拾得一枝金钗，做工精巧，恰好陆知薇遣人来寻，遂当面归还。\n恰逢前朝传来消息，姜景恒（姜晚晴之父）在前朝得封赏，功勋值 +17。","ladyIdx":6,"ladyName":"姜晚晴","fatherMeritEvent":17,"eventKind":"good","gains":{"beauty":0,"talent":0,"favor":5,"prestige":0},"extraGains":{"beauty":0,"talent":0,"favor":1,"prestige":0},"lady2Name":"贺兰月","sleepHit":true},{"id":"a_1788675875373","time":"弘昼元年 · 七月 · 上旬","place":"含章殿","type":"偶遇","result":"好感","detail":"含章殿廊下偶遇贺兰月抚琴，曲声幽怨，闻之动容，一曲终了相视无言。\n恰逢前朝传来消息，陆思齐（陆知薇之父）在前朝得封赏，功勋值 +17。","ladyIdx":5,"ladyName":"陆知薇","fatherMeritEvent":17,"eventKind":"good","gains":{"beauty":0,"talent":2,"favor":0,"prestige":0},"extraGains":{"beauty":5,"talent":0,"favor":0,"prestige":0},"lady2Name":"姜晚晴","sleepHit":false},{"id":"a_1788687220493","time":"弘昼元年 · 七月 · 上旬","place":"尚食局","type":"识人","result":"人物","detail":"于尚食局与秦照影同桌品茶，谈及宫中糕点的掌故，她谈吐不俗，似有隐情。","ladyIdx":2,"ladyName":"温如玉","eventKind":"good","settleX":{"type":"prestige","dim":null,"prestige":1,"sleep":false},"settleY":{"type":"dim","dim":{"beauty":0,"talent":0,"favor":0,"moral":5},"prestige":0,"sleep":false},"lady2Name":"姜晚晴"},{"id":"a_1788697614947","time":"弘昼元年 · 七月 · 上旬","place":"长乐宫","type":"听闻","result":"剧情","detail":"长乐宫洒扫太监窃窃私语，说贺兰月近日与某位外命妇往来甚密，不知在谋划什么。\n恰逢前朝传来消息，柳耀祖（柳含烟之父）在前朝得封赏，功勋值 +19。","ladyIdx":1,"ladyName":"柳含烟","fatherMeritEvent":19,"eventKind":"good","gains":{"beauty":0,"talent":0,"favor":0,"moral":1},"extraGains":{"beauty":1,"talent":0,"favor":0,"moral":0},"lady2Name":"秦照影","sleepHit":false}],"rank":[{"rank":"尊一品","title":"皇后","limit":1,"requirement":"须有一嗣，恩宠≥8，威望≥8","note":"称本宫，居凤仪殿"},{"rank":"正一品","title":"皇贵妃","limit":1,"requirement":"恩宠≥8，威望≥6，寝数≥20","note":"称本宫，居永宁宫"},{"rank":"从一品","title":"贵妃","limit":2,"requirement":"恩宠≥7，威望≥5，寝数≥15","note":"称本宫，居咸福宫"},{"rank":"正二品","title":"妃","limit":4,"requirement":"恩宠≥6，威望≥4，寝数≥10","note":"称本宫，居各宫主殿"},{"rank":"从二品","title":"嫔","limit":6,"requirement":"恩宠≥5，威望≥3，寝数≥6","note":""},{"rank":"正三品","title":"贵人","limit":99,"requirement":"恩宠≥4，寝数≥4","note":""},{"rank":"从三品","title":"美人","limit":99,"requirement":"恩宠≥3，寝数≥3","note":""},{"rank":"正四品","title":"才人","limit":99,"requirement":"恩宠≥2，寝数≥2","note":""},{"rank":"从四品","title":"常在","limit":99,"requirement":"恩宠≥1，寝数≥1","note":""},{"rank":"正五品","title":"答应","limit":99,"requirement":"入宫即可","note":""}],"journey":[],"globalTime":{"year":"弘昼元年","monthIdx":6,"xunIdx":0,"lastTs":1788784014534}};
-  var __SYNC_TIME__ = "2026/9/7 20:39:29";
+  var __SYNC_TIME__ = "2026/9/7 22:08:21";
   try {
     localStorage.setItem('yuchilao_concubine_data', JSON.stringify(__ARCHIVE__));
     localStorage.setItem('yuchilao_archive_seed_v2', '1');
@@ -1719,7 +1766,10 @@
                                 <span id="avatarHint">点击上传头像</span>
                             </div>
                             <input type="file" id="avatarInput" accept="image/*" style="display:none;" onchange="handleAvatarUpload(this)">
-                            <div class="arch-section-title" style="margin-top:18px;font-size:15px;">详细人设介绍</div>
+                            <div class="arch-section-title" style="margin-top:18px;font-size:15px;display:flex;justify-content:space-between;align-items:center;">
+                                <span>详细人设介绍</span>
+                                <button class="btn" style="padding:3px 10px;font-size:11px;" onclick="randomIntro()" title="根据妃嫔属性随机生成人设">随机生成</button>
+                            </div>
                             <p class="arch-section-hint">性格、外貌、生平、心机与野心等设定</p>
                             <textarea class="arch-textarea tall" id="archIntro" style="font-size:12px;line-height:1.9;" placeholder="此处填写详细人设介绍……"></textarea>
                             <!-- 晋升路线图 -->
@@ -2339,7 +2389,117 @@
                 </button>
                 <div class="sub-page-title">个 人 历 程</div>
                 <div class="sub-page-title-en">PERSONAL JOURNEY</div>
+                <!-- 右上角搜索妃嫔 -->
+                <div class="journey-search-box">
+                    <input type="text" id="journeySearchInput" placeholder="搜索妃嫔名字…" oninput="filterJourneySearch()" onfocus="filterJourneySearch()" autocomplete="off">
+                    <div class="journey-search-dropdown" id="journeySearchDropdown"></div>
+                </div>
             </div>
+            <!-- 妃嫔圆圈抬头 -->
+            <div class="journey-lady-header" id="journeyLadyHeader">
+                <div class="journey-name-circle">
+                    <span id="journeyLadyName">—</span>
+                </div>
+                <div class="journey-lady-meta">
+                    <div class="journey-meta-row">
+                        <span class="journey-meta-label">位份</span><span class="journey-meta-val" id="journeyLadyRank">—</span>
+                        <span class="journey-meta-label">封号</span><span class="journey-meta-val" id="journeyLadyTitle">—</span>
+                        <span class="journey-meta-label">年龄</span><span class="journey-meta-val" id="journeyLadyAge">—</span>
+                        <span class="journey-meta-label">宫殿</span><span class="journey-meta-val" id="journeyLadyPalace">—</span>
+                    </div>
+                    <div class="journey-meta-row">
+                        <span class="journey-meta-label">家世</span><span class="journey-meta-val" id="journeyLadyFamily">—</span>
+                        <span class="journey-meta-label">嫡庶</span><span class="journey-meta-val" id="journeyLadyLineage">—</span>
+                        <span class="journey-meta-label">入宫</span><span class="journey-meta-val" id="journeyLadyInDate">—</span>
+                    </div>
+                    <div class="journey-meta-row journey-attrs-row">
+                        <span class="journey-attr"><span class="journey-attr-label">容貌</span><span class="journey-attr-val" id="journeyLadyBeauty">—</span></span>
+                        <span class="journey-attr"><span class="journey-attr-label">才情</span><span class="journey-attr-val" id="journeyLadyTalent">—</span></span>
+                        <span class="journey-attr"><span class="journey-attr-label">恩宠</span><span class="journey-attr-val" id="journeyLadyFavor">—</span></span>
+                        <span class="journey-attr"><span class="journey-attr-label">道德</span><span class="journey-attr-val" id="journeyLadyMoral">—</span></span>
+                        <span class="journey-attr"><span class="journey-attr-label">威望</span><span class="journey-attr-val" id="journeyLadyPrestige">—</span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- 关系图谱 -->
+            <div class="arch-section">
+                <div class="arch-section-title">关系图谱</div>
+                <p class="arch-section-hint">根据妃嫔档案中的对戏记录自动汇总，按关系分类，颜色区分</p>
+                <div class="relation-graph" id="relationGraph"></div>
+            </div>
+            <!-- 戏录时间线 -->
+            <div class="arch-section">
+                <div class="arch-section-title">戏录时间线 <span style="font-size:12px;color:var(--ink-light);">（自入宫起，按时间排序）</span></div>
+                <div class="rp-timeline" id="rpTimeline"></div>
+                <div class="empty-state" id="rpTimelineEmpty" style="display:none;">
+                    <div class="empty-state-text">尚无戏录</div>
+                    <div class="empty-state-hint">可在下方上传戏录文本，自动解析生成</div>
+                </div>
+            </div>
+            <!-- 上传戏录 -->
+            <div class="arch-section">
+                <div class="arch-section-title">上传戏录 <span style="font-size:12px;color:var(--ink-light);">（支持 .txt，自动解析时间线/主题/对象/经典语句）</span></div>
+                <div class="upload-area" id="uploadArea" onclick="document.getElementById('rpUploadInput').click()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:36px;color:var(--gold);margin-bottom:8px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <div style="font-size:14px;color:var(--ink);">点击上传戏录文本（.txt）</div>
+                    <div style="font-size:11px;color:var(--ink-light);margin-top:4px;">系统将自动统计字数并解析关键信息</div>
+                    <input type="file" id="rpUploadInput" accept=".txt,text/plain" style="display:none;" onchange="handleRpUpload(this)">
+                </div>
+                <!-- 解析结果 -->
+                <div id="rpParseResult" style="display:none;margin-top:16px;">
+                    <div class="arch-section-title" style="font-size:14px;">解析结果 <span id="rpWordCount" style="font-size:12px;color:var(--cinnabar);"></span></div>
+                    <div class="arch-fields" style="margin-top:10px;">
+                        <div class="arch-field"><label>关键时间线</label>
+                            <input type="text" class="field-input" id="parseTime" placeholder="自动识别，可修改">
+                        </div>
+                        <div class="arch-field"><label>主题</label>
+                            <input type="text" class="field-input" id="parseTheme" placeholder="自动识别，可修改">
+                        </div>
+                        <div class="arch-field"><label>对戏对象</label>
+                            <select class="field-input" id="parseTarget"></select>
+                        </div>
+                        <div class="arch-field"><label>戏录类型</label>
+                            <select class="field-input" id="parseType">
+                                <option value="对戏">对戏（有对象）</option>
+                                <option value="自戏">自戏（无对象）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="arch-field" style="margin-top:10px;"><label>经典语句摘录</label>
+                        <textarea class="field-input" id="parseQuote" rows="2" placeholder="自动提取，可修改"></textarea>
+                    </div>
+                    <div class="arch-field" style="margin-top:10px;"><label>戏录全文</label>
+                        <textarea class="field-input" id="parseContent" rows="4" placeholder="戏录全文"></textarea>
+                    </div>
+                    <div style="margin-top:14px;text-align:right;">
+                        <button class="btn btn-primary" onclick="saveParsedRp()">保存到戏录</button>
+                        <button class="btn" onclick="cancelParse()">取消</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 戏录结算 -->
+            <div class="arch-section">
+                <div class="arch-section-title">戏录结算 <span style="font-size:12px;color:var(--ink-light);">（对戏：威望=字数÷10四舍五入；自戏：威望=字数÷10×0.8，封顶400）</span></div>
+                <div class="table-container">
+                    <div class="table-scroll">
+                        <table class="rel-table">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>类型</th>
+                                    <th>对戏对象</th>
+                                    <th>字数</th>
+                                    <th>威望结算</th>
+                                    <th>主题</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rpSettlementTbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="rp-settlement-total" id="rpSettlementTotal"></div>
+            </div>
+            <!-- 原有历程记录 -->
             <div class="toolbar">
                 <button class="btn btn-primary" onclick="openJourneyForm()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
@@ -2351,7 +2511,6 @@
                 </button>
                 <span class="toolbar-info" id="journeyCount">共 0 条历程</span>
             </div>
-            <!-- 新增/编辑表单 -->
             <div class="arch-section" id="journeyForm" style="display:none;">
                 <div class="arch-section-title" id="journeyFormTitle">新增历程</div>
                 <div class="arch-fields">
@@ -2378,7 +2537,6 @@
                     <button class="btn" onclick="cancelJourneyForm()">取消</button>
                 </div>
             </div>
-            <!-- 历程时间线 -->
             <div id="journeyTimeline"></div>
             <div class="empty-state" id="journeyEmpty" style="display:none;">
                 <div class="empty-state-text">尚无个人历程</div>
@@ -2638,6 +2796,14 @@
                 if (c.rpRecords.length === 0 && c.rplog && String(c.rplog).trim()) {
                     c.rpRecords = String(c.rplog).split("\n").map(l => l.trim()).filter(Boolean).map(l => ({ time: "", target: "", kind: "", content: l }));
                 }
+                // 新版戏录字段迁移：补齐 theme / quote / type / wordCount
+                c.rpRecords.forEach(r => {
+                    if (!r) return;
+                    if (r.theme == null) r.theme = "";
+                    if (r.quote == null) r.quote = "";
+                    if (r.type == null) r.type = r.target ? "对戏" : "自戏";
+                    if (r.wordCount == null && r.content) r.wordCount = String(r.content).replace(/\s/g, "").length;
+                });
                 if (c.rpRecords.length && !c.rplog) c.rplog = rpRecordsToText(c.rpRecords);
             });
             // 怀孕记录迁移：健康 / 产程
@@ -2826,7 +2992,13 @@
             }
             if (view === "journey") {
                 loadData();
+                if (currentJourneyIdx == null || currentJourneyIdx >= concubineList.length) currentJourneyIdx = concubineList.length > 0 ? 0 : -1;
+                renderJourneyLady();
+                renderRelationGraph();
+                renderRpTimeline();
+                renderRpSettlement();
                 renderJourneyList();
+                document.getElementById("journeySearchDropdown").classList.remove("show");
             }
         }
         // ========== 妃嫔表渲染 ==========
@@ -3209,16 +3381,20 @@
             tbody.innerHTML = "";
             if (!item) return;
             if (!Array.isArray(item.familyTree)) item.familyTree = [];
+            // 按妃嫔年龄计算合理的家庭成员年龄
+            const ladyAge = parseInt(item.age) || 18;
+            const fatherAgeBase = ladyAge + 25 + Math.floor(Math.random() * 11); // 父亲比妃嫔大25~35岁
+            const motherAgeBase = ladyAge + 17 + Math.floor(Math.random() * 9);  // 母亲17~25岁生妃嫔
             // 父亲行：跟随官职表同步生产（名讳只读，其余字段可编辑）
             const off = officialList[currentArchiveIdx];
             const fatherName = (off && off.fatherName) ? off.fatherName : (item.family ? "父亲" : "");
             let fatherRow = item.familyTree.find(m => m && m.relation === "父亲");
             if (!fatherRow && fatherName) {
-                fatherRow = { name: fatherName, relation: "父亲", age: 40 + Math.floor(Math.random() * 21), personality: randomPersonality(), industry: 5000 + Math.floor(Math.random() * 45001), marital: "已婚", spouse: "正室" + SPOUSE_SURNAMES[Math.floor(Math.random() * SPOUSE_SURNAMES.length)] + "氏", health: 100 };
+                fatherRow = { name: fatherName, relation: "父亲", age: fatherAgeBase, personality: randomPersonality(), industry: 5000 + Math.floor(Math.random() * 45001), marital: "已婚", spouse: "正室" + SPOUSE_SURNAMES[Math.floor(Math.random() * SPOUSE_SURNAMES.length)] + "氏", health: 100 };
                 item.familyTree.unshift(fatherRow);
             }
             if (fatherRow && fatherName) fatherRow.name = fatherName;
-            if (fatherRow && fatherRow.age == null) fatherRow.age = 40 + Math.floor(Math.random() * 21);
+            if (fatherRow && fatherRow.age == null) fatherRow.age = fatherAgeBase;
             if (fatherRow && fatherRow.personality == null) fatherRow.personality = randomPersonality();
             if (fatherRow && fatherRow.industry == null) fatherRow.industry = 5000 + Math.floor(Math.random() * 45001);
             if (fatherRow && fatherRow.marital == null) fatherRow.marital = "已婚";
@@ -3275,9 +3451,34 @@
             const off = officialList[currentArchiveIdx];
             const surname = (off && off.fatherName) ? String(off.fatherName).charAt(0) : (item.family ? String(item.family).charAt(0) : "赵");
             const given = ["静","婉","芸","萱","芷","柔","兰","月","宁","雅","清","昭","蘅","纨","素","采","微","青","棠"];
-            const pool = (item.lineage === "嫡")
-                ? [{ r: "母亲（正室）", s: ["李氏", "王氏", "张氏", "陈氏"], a: [32, 48] }, { r: "嫡兄", a: [22, 38] }, { r: "嫡姐", a: [20, 36] }, { r: "嫡弟", a: [6, 24] }, { r: "嫡妹", a: [4, 22] }, { r: "姨娘", s: ["赵氏", "孙氏", "周氏", "吴氏"], a: [22, 40] }]
-                : [{ r: "母亲（妾室）", s: ["柳氏", "周氏", "吴氏", "郑氏"], a: [28, 42] }, { r: "庶兄", a: [20, 36] }, { r: "庶姐", a: [18, 34] }, { r: "庶弟", a: [4, 22] }, { r: "庶妹", a: [2, 20] }, { r: "姨娘", s: ["赵氏", "孙氏", "周氏", "吴氏"], a: [22, 40] }];
+            // 按妃嫔年龄计算合理年龄范围
+            const ladyAge = parseInt(item.age) || 18;
+            const motherAge = ladyAge + 17 + Math.floor(Math.random() * 9); // 母亲17~25岁生妃嫔
+            const fatherRow = item.familyTree.find(m => m && m.relation === "父亲");
+            const fatherAge = fatherRow && fatherRow.age ? parseInt(fatherRow.age) : (ladyAge + 28);
+            // 孩子年龄必须 >17 岁，且母亲17岁后才生（孩子年龄 < 母亲年龄-17）
+            const maxChildAge = motherAge - 18; // 最大的孩子年龄
+            const minChildAge = 18;             // 最小成年年龄
+            // 构建候选池：兄姐年龄 > 妃嫔年龄，弟妹年龄 < 妃嫔年龄（但仍需 >=18）
+            const pool = [];
+            // 母亲
+            pool.push({ r: item.lineage === "嫡" ? "母亲（正室）" : "母亲（妾室）", s: item.lineage === "嫡" ? ["李氏","王氏","张氏","陈氏"] : ["柳氏","周氏","吴氏","郑氏"], fixedAge: motherAge });
+            // 姨娘
+            pool.push({ r: "姨娘", s: ["赵氏","孙氏","周氏","吴氏"], ageMin: Math.max(18, fatherAge - 20), ageMax: Math.max(20, fatherAge - 5) });
+            // 兄/姐（比妃嫔大）
+            if (ladyAge + 1 <= maxChildAge && ladyAge + 1 >= minChildAge) {
+                pool.push({ r: item.lineage === "嫡" ? "嫡兄" : "庶兄", ageMin: Math.max(ladyAge + 1, minChildAge), ageMax: maxChildAge });
+                pool.push({ r: item.lineage === "嫡" ? "嫡姐" : "庶姐", ageMin: Math.max(ladyAge + 1, minChildAge), ageMax: maxChildAge });
+            }
+            // 弟/妹（比妃嫔小，但必须 >=18）
+            if (ladyAge - 1 >= minChildAge) {
+                pool.push({ r: item.lineage === "嫡" ? "嫡弟" : "庶弟", ageMin: minChildAge, ageMax: ladyAge - 1 });
+                pool.push({ r: item.lineage === "嫡" ? "嫡妹" : "庶妹", ageMin: minChildAge, ageMax: ladyAge - 1 });
+            }
+            if (pool.length === 0) {
+                showToast("妃嫔年龄过小，无法生成成年家庭成员", "error");
+                return;
+            }
             const n = 1 + Math.floor(Math.random() * 3);
             for (let i = 0; i < n; i++) {
                 const kind = pool[Math.floor(Math.random() * pool.length)];
@@ -3286,7 +3487,14 @@
                 else name = surname + given[Math.floor(Math.random() * given.length)];
                 const rel = kind.r;
                 if (item.familyTree.some(m => m && m.relation === rel && m.name === name)) continue;
-                const age = kind.a[0] + Math.floor(Math.random() * (kind.a[1] - kind.a[0] + 1));
+                let age;
+                if (kind.fixedAge != null) {
+                    age = kind.fixedAge;
+                } else {
+                    const aMin = kind.ageMin || 18;
+                    const aMax = kind.ageMax || (aMin + 10);
+                    age = aMin + Math.floor(Math.random() * Math.max(1, aMax - aMin + 1));
+                }
                 const mar = randomMarital(age);
                 // 产业按年龄分配：低于20岁只分家族总资产的10%，其余随机10%~40%
                 const fatherTotal = parseInt((item.familyTree.find(m => m && m.relation === "父亲") || {}).industry) || 10000;
@@ -3304,6 +3512,85 @@
             }
             renderFamilyTree();
             showToast("已按「" + (item.lineage || "嫡") + "」身份随机生成家庭成员", "success");
+        }
+        // ========== 随机生成详细人设介绍 ==========
+        function randomIntro() {
+            const item = concubineList[currentArchiveIdx];
+            if (!item) return;
+            const name = item.name || "此女";
+            const age = parseInt(item.age) || 18;
+            const beauty = parseInt(item.beauty) || 5;
+            const talent = parseInt(item.talent) || 5;
+            const moral = parseInt(item.moral) || 5;
+            const favor = parseInt(item.favor) || 5;
+            const prestige = parseInt(item.prestige) || 5;
+            const lineage = item.lineage || "嫡";
+            const family = item.family || "官宦之女";
+            const rank = item.rank || "妃嫔";
+            // 外貌描述
+            const beautyDesc = [
+                { min: 9, text: ["生得倾国倾城，容貌冠绝后宫，举手投足间皆是风情，见者无不失神。", "有沉鱼落雁之容，闭月羞花之貌，便是宫中最挑剔的宫女也不得不赞一句天人之姿。"] },
+                { min: 7, text: ["容貌清丽，眉目如画，虽不是绝色，却自有一股动人风韵。", "生得明眸皓齿，肌肤胜雪，一颦一笑皆惹人怜爱。"] },
+                { min: 5, text: ["容貌中上，五官端正，虽不惊艳，却耐看耐品，别有一番温婉气质。", "生得清秀可人，不算绝顶美貌，却胜在气质温润，令人亲近。"] },
+                { min: 0, text: ["容貌平平，并无过人之处，全凭性情与才学在宫中立足。", "相貌寻常，扔进人堆里便找不出来，却也因此少了许多明枪暗箭。"] }
+            ];
+            // 才情描述
+            const talentDesc = [
+                { min: 9, text: ["自幼饱读诗书，琴棋书画无一不精，才名远播，便是朝中大儒也赞一句巾帼不让须眉。", "才情卓绝，诗词歌赋信手拈来，一手好字更是深得圣心。"] },
+                { min: 7, text: ["精通诗书，擅琴棋，虽不说是样样绝顶，却也拿得出手。", "颇有才情，闲来吟诗作对，抚琴作画，也算宫中雅人。"] },
+                { min: 5, text: ["粗通文墨，认得几个字，读得几卷书，不算才女却也不粗鄙。", "才情平平，女红尚可，诗书只算入门，胜在性情温和。"] },
+                { min: 0, text: ["不甚读书，大字不识几个，全凭家世与容貌入宫。", "胸无点墨，却也不以此为耻，反倒活得直白通透。"] }
+            ];
+            // 性格描述（随机）
+            const personalities = [
+                "性端方持重，不怒自威，凡事皆有章法",
+                "八面玲珑，最擅揣摩圣意，恩宠正隆",
+                "性爽朗明快，不拘小节，最是护短也最是记仇",
+                "清冷孤高，不屑结党，以才学自恃",
+                "性怯懦，无依无靠，只求在深宫自保",
+                "天真烂漫，不谙世事，入宫未久",
+                "表面温婉，内里心机深沉，尤善借刀杀人",
+                "外柔内刚，看似温顺，实则极有主见",
+                "争强好胜，不甘人下，事事都要争个头筹",
+                "佛系寡欲，不争不抢，只求平安度日",
+                "心狠手辣，为达目的不择手段",
+                "重情重义，对信任之人掏心掏肺"
+            ];
+            // 心机描述
+            const scheming = [
+                "看似温婉，实则心中自有丘壑，深谙制衡之道",
+                "面上温顺恭谨，内里心机深沉，尤善借刀杀人",
+                "胸无城府，喜怒哀乐皆写在脸上",
+                "大智若愚，看似糊涂，实则心里比谁都清楚",
+                "工于心计，每一步都算得清清楚楚",
+                "心思单纯，被人卖了还帮着数钱"
+            ];
+            // 家世描述
+            const familyText = (lineage === "嫡")
+                ? `出身${family}，乃家中嫡女，自幼备受宠爱，教养森严`
+                : `出身${family}，却是庶出，自小在嫡母手下讨生活，更懂察言观色`;
+            // 宫中处境
+            const courtDesc = [
+                `入宫已有数年，从低位一步步爬到今日的${rank}，其中艰辛不足为外人道。`,
+                `初入宫闱，封为${rank}，前路漫漫，一切尚未可知。`,
+                `在宫中沉浮多年，如今贵为${rank}，身边自有一帮追随者，也树了不少敌人。`,
+                `虽居${rank}之位，却始终圣眷平平，在宫中不咸不淡地过着日子。`
+            ];
+            // 组合
+            const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+            const bDesc = beautyDesc.find(d => beauty >= d.min) || beautyDesc[beautyDesc.length - 1];
+            const tDesc = talentDesc.find(d => talent >= d.min) || talentDesc[talentDesc.length - 1];
+            const intro = [
+                `${name}，${familyText}。`,
+                pick(bDesc.text),
+                pick(tDesc.text),
+                `${pick(personalities)}。${pick(scheming)}。`,
+                pick(courtDesc)
+            ].join("\n");
+            document.getElementById("archIntro").value = intro;
+            item.intro = intro;
+            persist();
+            showToast("人设已随机生成，可自行修改", "success");
         }
         function addFamilyMember() {
             const item = concubineList[currentArchiveIdx];
@@ -5070,6 +5357,303 @@
             }, true);
             if (document.body) document.body.classList.add("readonly");
         }
+        // ========== 个人历程：妃嫔独立页面 ==========
+        let currentJourneyIdx = 0;
+        // 关系分类映射与颜色
+        const RELATION_GROUPS = [
+            { key: "结盟", color: "#b89968", kinds: ["同盟", "联姻"] },
+            { key: "交好", color: "#5a7d70", kinds: ["友好", "闺蜜", "姐妹", "师徒", "主仆", "依附", "旧识", "倾慕"] },
+            { key: "交恶", color: "#a8483c", kinds: ["厌恶", "敌对", "情敌", "宿怨", "忌惮", "利用"] },
+            { key: "知己", color: "#4a6fa5", kinds: ["知己"] },
+            { key: "普通", color: "#8a7b63", kinds: ["初识", ""] }
+        ];
+        function classifyRelation(kind) {
+            for (const g of RELATION_GROUPS) {
+                if (g.kinds.indexOf(kind) >= 0) return g.key;
+            }
+            return "普通";
+        }
+        // 渲染圆圈抬头与妃嫔信息
+        function renderJourneyLady() {
+            const item = concubineList[currentJourneyIdx];
+            if (!item) {
+                document.getElementById("journeyLadyName").textContent = "—";
+                return;
+            }
+            document.getElementById("journeyLadyName").textContent = item.name || "—";
+            document.getElementById("journeyLadyRank").textContent = item.rank || "—";
+            document.getElementById("journeyLadyTitle").textContent = item.title ? (item.title + "妃") : "—";
+            document.getElementById("journeyLadyAge").textContent = (item.age || "—") + "岁";
+            document.getElementById("journeyLadyPalace").textContent = item.palace || "—";
+            document.getElementById("journeyLadyFamily").textContent = item.family || "—";
+            document.getElementById("journeyLadyLineage").textContent = item.lineage || "—";
+            document.getElementById("journeyLadyInDate").textContent = item.inDate || "—";
+            document.getElementById("journeyLadyBeauty").textContent = item.beauty || "—";
+            document.getElementById("journeyLadyTalent").textContent = item.talent || "—";
+            document.getElementById("journeyLadyFavor").textContent = item.favor || "—";
+            document.getElementById("journeyLadyMoral").textContent = item.moral || "—";
+            document.getElementById("journeyLadyPrestige").textContent = item.prestige || "—";
+        }
+        // 搜索妃嫔
+        function filterJourneySearch() {
+            const input = document.getElementById("journeySearchInput");
+            const dropdown = document.getElementById("journeySearchDropdown");
+            const q = (input.value || "").trim();
+            const matches = concubineList
+                .map((c, i) => ({ c, i }))
+                .filter(o => !q || (o.c.name && o.c.name.indexOf(q) >= 0));
+            if (matches.length === 0) {
+                dropdown.innerHTML = '<div class="journey-search-item" style="color:#999;">无匹配妃嫔</div>';
+            } else {
+                dropdown.innerHTML = matches.map(o =>
+                    '<div class="journey-search-item" onclick="selectJourneyLady(' + o.i + ')">' +
+                    '<span>' + escapeHtml(o.c.name || "?") + '</span>' +
+                    '<span class="rank-tag">' + escapeHtml(o.c.rank || "") + '</span>' +
+                    '</div>'
+                ).join("");
+            }
+            dropdown.classList.add("show");
+        }
+        function selectJourneyLady(idx) {
+            currentJourneyIdx = idx;
+            document.getElementById("journeySearchInput").value = "";
+            document.getElementById("journeySearchDropdown").classList.remove("show");
+            renderJourneyLady();
+            renderRelationGraph();
+            renderRpTimeline();
+            renderRpSettlement();
+            renderJourneyList();
+        }
+        // 点击页面其他地方关闭搜索下拉
+        document.addEventListener("click", function(e) {
+            const box = document.querySelector(".journey-search-box");
+            if (box && !box.contains(e.target)) {
+                const dd = document.getElementById("journeySearchDropdown");
+                if (dd) dd.classList.remove("show");
+            }
+        });
+        // 渲染关系图谱
+        function renderRelationGraph() {
+            const item = concubineList[currentJourneyIdx];
+            const container = document.getElementById("relationGraph");
+            if (!item || !container) return;
+            const recs = item.rpRecords || [];
+            // 按对戏对象去重，取最新关系
+            const latestByTarget = {};
+            recs.forEach(r => {
+                if (!r || !r.target) return;
+                latestByTarget[r.target] = r;
+            });
+            // 分组
+            const groups = {};
+            RELATION_GROUPS.forEach(g => groups[g.key] = []);
+            Object.values(latestByTarget).forEach(r => {
+                const gk = classifyRelation(r.kind || "");
+                groups[gk].push(r.target);
+            });
+            container.innerHTML = RELATION_GROUPS.map(g => {
+                const names = groups[g.key] || [];
+                return '<div class="relation-group">' +
+                    '<div class="relation-group-title"><span class="relation-dot" style="background:' + g.color + ';"></span>' + g.key + '（' + names.length + '）</div>' +
+                    '<div class="relation-names">' +
+                    (names.length ? names.map(n => '<span class="relation-name" style="border-left:3px solid ' + g.color + ';">' + escapeHtml(n) + '</span>').join("") : '<span style="font-size:11px;color:#bbb;">暂无</span>') +
+                    '</div></div>';
+            }).join("");
+        }
+        // 渲染戏录时间线
+        function renderRpTimeline() {
+            const item = concubineList[currentJourneyIdx];
+            const container = document.getElementById("rpTimeline");
+            const empty = document.getElementById("rpTimelineEmpty");
+            if (!item || !container) return;
+            const recs = (item.rpRecords || []).filter(r => r && r.content).slice();
+            // 按时间排序（简单字符串排序，入宫早的在前）
+            recs.sort((a, b) => (a.time || "").localeCompare(b.time || "", "zh-CN"));
+            if (recs.length === 0) {
+                container.innerHTML = "";
+                empty.style.display = "block";
+                return;
+            }
+            empty.style.display = "none";
+            container.innerHTML = recs.map((r, i) => {
+                const theme = r.theme || inferTheme(r.content || "");
+                const quote = r.quote || extractQuote(r.content || "");
+                return '<div class="rp-timeline-item">' +
+                    '<div class="rp-tl-time">' + escapeHtml(r.time || "时间不详") + '</div>' +
+                    '<div class="rp-tl-meta">' +
+                    '<span>主题：' + escapeHtml(theme) + '</span>' +
+                    '<span>对象：' + escapeHtml(r.target || "（自戏）") + '</span>' +
+                    '<span>关系：' + escapeHtml(r.kind || "—") + '</span>' +
+                    '<span>' + (r.type === "自戏" ? "自戏" : "对戏") + '</span>' +
+                    (r.wordCount ? '<span>' + r.wordCount + '字</span>' : '') +
+                    '</div>' +
+                    (quote ? '<div class="rp-tl-quote">「' + escapeHtml(quote) + '」</div>' : '') +
+                    '<div class="rp-tl-content">' + escapeHtml(r.content || "").substring(0, 200) + (r.content && r.content.length > 200 ? "…" : "") + '</div>' +
+                    '</div>';
+            }).join("");
+        }
+        // 从内容推断主题
+        function inferTheme(text) {
+            const t = text || "";
+            const themes = [
+                { keywords: ["争宠", "邀宠", "圣宠", "侍寝", "恩宠"], label: "争宠邀恩" },
+                { keywords: ["诗", "画", "琴", "书", "墨", "雅集", "才艺"], label: "才艺雅集" },
+                { keywords: ["病", "疾", "探病", "汤药", "小产", "滑胎"], label: "病痛灾祸" },
+                { keywords: ["赏", "赐", "晋", "升", "册封", "进位"], label: "赏赐晋封" },
+                { keywords: ["流言", "陷害", "诬陷", "算计", "毒", "暗害"], label: "宫斗陷害" },
+                { keywords: ["宴", "席", "酒", "游园", "赏花", "灯会"], label: "宴饮游乐" },
+                { keywords: ["孕", "胎", "生产", "诞下", "皇子", "公主"], label: "孕育皇嗣" },
+                { keywords: ["哭", "泪", "悲", "哀", "悼", "丧"], label: "悲悼伤怀" },
+                { keywords: ["结盟", "联手", "合作", "同盟", "依附"], label: "结盟联手" },
+                { keywords: ["请安", "晨昏", "拜见", "行礼"], label: "日常请安" }
+            ];
+            for (const th of themes) {
+                if (th.keywords.some(k => t.indexOf(k) >= 0)) return th.label;
+            }
+            return "日常记事";
+        }
+        // 提取经典语句（引号内或最长句）
+        function extractQuote(text) {
+            const t = text || "";
+            const m = t.match(/[「『"]([^」』"]{4,60})[」』"]/);
+            if (m) return m[1];
+            const sentences = t.split(/[。！？!?]/).filter(s => s.trim().length >= 6 && s.trim().length <= 60);
+            if (sentences.length > 0) return sentences[Math.floor(Math.random() * sentences.length)].trim();
+            return t.substring(0, 40);
+        }
+        // ========== 上传戏录与解析 ==========
+        let pendingParseData = null;
+        function handleRpUpload(input) {
+            const file = input.files && input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result || "";
+                const wordCount = text.replace(/\s/g, "").length;
+                const item = concubineList[currentJourneyIdx];
+                const parsed = parseRpContent(text, item ? item.name : "");
+                pendingParseData = { text: text, wordCount: wordCount, parsed: parsed };
+                document.getElementById("rpWordCount").textContent = "（共 " + wordCount + " 字）";
+                document.getElementById("parseTime").value = parsed.time || "";
+                document.getElementById("parseTheme").value = parsed.theme || "";
+                document.getElementById("parseQuote").value = parsed.quote || "";
+                document.getElementById("parseContent").value = text;
+                // 对戏对象下拉
+                const sel = document.getElementById("parseTarget");
+                const targetOptions = concubineList
+                    .filter((c, i) => c.name && i !== currentJourneyIdx)
+                    .map(c => '<option value="' + escapeHtml(c.name) + '">' + escapeHtml(c.name) + '</option>')
+                    .join("");
+                sel.innerHTML = '<option value="">— 无（自戏）—</option>' + targetOptions;
+                if (parsed.target) sel.value = parsed.target;
+                // 类型判断
+                document.getElementById("parseType").value = parsed.target ? "对戏" : "自戏";
+                document.getElementById("rpParseResult").style.display = "block";
+                showToast("戏录已解析，共 " + wordCount + " 字，请确认后保存", "success");
+            };
+            reader.readAsText(file, "UTF-8");
+            input.value = "";
+        }
+        // 解析戏录内容
+        function parseRpContent(text, selfName) {
+            const result = { time: "", theme: "", target: "", quote: "" };
+            // 提取时间
+            const timeRe = /((弘昼|景和|元康|建元|永兴)[元一二三四五六七八九十百千万]+年[^，。；\s]*(?:月|旬|春|夏|秋|冬)?)|((正月|二月|三月|四月|五月|六月|七月|八月|九月|十月|冬月|腊月)[^，。；\s]*)|(上旬|中旬|下旬)/;
+            const tm = text.match(timeRe);
+            if (tm) result.time = tm[0];
+            // 提取对戏对象（匹配妃嫔表名字）
+            const otherNames = concubineList
+                .filter((c, i) => c.name && c.name !== selfName && i !== currentJourneyIdx)
+                .map(c => c.name);
+            for (const n of otherNames) {
+                if (text.indexOf(n) >= 0) { result.target = n; break; }
+            }
+            // 推断主题
+            result.theme = inferTheme(text);
+            // 提取经典语句
+            result.quote = extractQuote(text);
+            return result;
+        }
+        function saveParsedRp() {
+            const item = concubineList[currentJourneyIdx];
+            if (!item || !pendingParseData) return;
+            if (!item.rpRecords) item.rpRecords = [];
+            const time = document.getElementById("parseTime").value || globalTimeText();
+            const theme = document.getElementById("parseTheme").value;
+            const target = document.getElementById("parseTarget").value;
+            const type = document.getElementById("parseType").value;
+            const quote = document.getElementById("parseQuote").value;
+            const content = document.getElementById("parseContent").value;
+            const wordCount = pendingParseData.wordCount;
+            // 推断关系
+            let kind = "";
+            if (target) {
+                const existing = (item.rpRecords || []).filter(r => r && r.target === target);
+                kind = existing.length > 0 ? (existing[existing.length - 1].kind || "友好") : "友好";
+            }
+            item.rpRecords.push({
+                time: time, target: target, kind: kind, content: content,
+                theme: theme, quote: quote, type: type, wordCount: wordCount
+            });
+            // 威望结算
+            let addPrestige = 0;
+            if (type === "自戏") {
+                addPrestige = Math.min(400, Math.round(wordCount / 10 * 0.8));
+            } else {
+                addPrestige = Math.round(wordCount / 10);
+            }
+            item.prestige = String((parseInt(item.prestige) || 0) + addPrestige);
+            syncRplog();
+            persist();
+            renderRpTimeline();
+            renderRpSettlement();
+            renderRelationGraph();
+            renderJourneyLady();
+            document.getElementById("rpParseResult").style.display = "none";
+            pendingParseData = null;
+            showToast("戏录已保存，威望 +" + addPrestige + "（" + type + "，" + wordCount + "字）", "success");
+        }
+        function cancelParse() {
+            document.getElementById("rpParseResult").style.display = "none";
+            pendingParseData = null;
+        }
+        // ========== 戏录结算 ==========
+        function renderRpSettlement() {
+            const item = concubineList[currentJourneyIdx];
+            const tbody = document.getElementById("rpSettlementTbody");
+            const totalEl = document.getElementById("rpSettlementTotal");
+            if (!item || !tbody) return;
+            const recs = (item.rpRecords || []).filter(r => r && r.content);
+            let totalDui = 0, totalZi = 0, totalWords = 0, totalPrestige = 0;
+            tbody.innerHTML = recs.map(r => {
+                const wc = r.wordCount || (r.content ? r.content.replace(/\s/g, "").length : 0);
+                const isZi = r.type === "自戏" || !r.target;
+                let prestige;
+                if (isZi) {
+                    prestige = Math.min(400, Math.round(wc / 10 * 0.8));
+                    totalZi += prestige;
+                } else {
+                    prestige = Math.round(wc / 10);
+                    totalDui += prestige;
+                }
+                totalWords += wc;
+                totalPrestige += prestige;
+                return '<tr>' +
+                    '<td>' + escapeHtml(r.time || "—") + '</td>' +
+                    '<td class="' + (isZi ? "settle-type-zi" : "settle-type-dui") + '">' + (isZi ? "自戏" : "对戏") + '</td>' +
+                    '<td>' + escapeHtml(r.target || "—") + '</td>' +
+                    '<td>' + wc + '</td>' +
+                    '<td style="color:var(--cinnabar);font-weight:700;">+' + prestige + '</td>' +
+                    '<td>' + escapeHtml(r.theme || inferTheme(r.content || "")) + '</td>' +
+                    '</tr>';
+            }).join("");
+            totalEl.innerHTML =
+                '<div class="total-item"><span class="total-label">戏录总数</span><span class="total-val">' + recs.length + '</span></div>' +
+                '<div class="total-item"><span class="total-label">总字数</span><span class="total-val">' + totalWords + '</span></div>' +
+                '<div class="total-item"><span class="total-label">对戏威望</span><span class="total-val" style="color:var(--celadon-deep);">+' + totalDui + '</span></div>' +
+                '<div class="total-item"><span class="total-label">自戏威望</span><span class="total-val" style="color:var(--gold);">+' + totalZi + '</span></div>' +
+                '<div class="total-item"><span class="total-label">威望合计</span><span class="total-val">+' + totalPrestige + '</span></div>';
+        }
         // ========== 初始化 ==========
         loadData();
         if (!localStorage.getItem(SEED_KEY)) {
@@ -5081,7 +5665,7 @@
     </script>
 
 <div id="sync-footer" style="text-align:center;padding:16px 20px 24px;color:#8a7b63;font-size:12px;border-top:1px solid #d4c5a9;margin-top:20px;background:linear-gradient(to bottom, transparent, rgba(184,153,104,0.06));">
-  <span style="color:#a8483c;">●</span> 数据截至 2026/9/7 20:39:29 · 由 sync.js 同步生成<br>
+  <span style="color:#a8483c;">●</span> 数据截至 2026/9/7 22:08:21 · 由 sync.js 同步生成<br>
   <span style="font-size:11px;opacity:0.7;">此处为只读浏览版，加点、晋升、抽取诸事请于编辑端操作后同步</span>
 </div>
 
