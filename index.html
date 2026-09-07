@@ -13,8 +13,8 @@
             box-sizing: border-box;
         }
         :root {
-            --paper: #f7f1e3;
-            --paper-deep: #efe6d3;
+            --paper: #e8dcc4;
+            --paper-deep: #ddd0b5;
             --ink: #3a3226;
             --ink-light: #6b5d4a;
             --celadon: #7a9e8f;
@@ -24,15 +24,19 @@
             --gold: #b89968;
             --gold-light: #d4b98a;
             --jade: #6b8e7f;
-            --border: #c9b896;
-            --shadow: rgba(90, 70, 40, 0.12);
+            --border: #b8a67e;
+            --shadow: rgba(90, 70, 40, 0.18);
         }
         html, body {
-            font-family: "Noto Serif SC", SimSun, "宋体", "STSong", serif;
+            font-family: "Noto Serif SC", "Source Han Serif SC", SimSun, "宋体", "STSong", serif;
             color: var(--ink);
             background-color: var(--paper);
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
         /* 宣纸纹理背景 */
         body::before {
@@ -394,9 +398,9 @@
             background: linear-gradient(180deg, var(--celadon) 0%, var(--celadon-deep) 100%);
             color: var(--paper);
             font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 2px;
-            padding: 14px 10px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 9px 6px;
             text-align: center;
             border-right: 1px solid rgba(255, 255, 255, 0.15);
             white-space: nowrap;
@@ -426,11 +430,11 @@
         }
         tbody input {
             width: 100%;
-            padding: 10px 8px;
+            padding: 6px 5px;
             border: none;
             background: transparent;
             font-family: inherit;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--ink);
             text-align: center;
             outline: none;
@@ -1355,6 +1359,53 @@
         .rp-tl-meta span { background: rgba(184,153,104,0.1); padding: 1px 8px; border-radius: 3px; }
         .rp-tl-quote { font-size: 13px; color: var(--ink); line-height: 1.8; font-style: italic; border-left: 3px solid var(--gold); padding-left: 10px; margin-top: 6px; }
         .rp-tl-content { font-size: 12px; color: var(--ink-light); margin-top: 6px; line-height: 1.7; max-height: 60px; overflow: hidden; position: relative; }
+        /* 皇宫地图 */
+        .map-svg-wrap { background: rgba(255,255,255,0.5); border-radius: 12px; padding: 16px; border: 1px solid rgba(201,184,150,0.4); box-shadow: 0 4px 20px rgba(90,70,40,0.1); }
+        .map-svg-wrap svg { width: 100%; height: auto; display: block; }
+        .map-place { cursor: pointer; transition: all 0.2s; }
+        .map-place:hover rect { filter: brightness(1.05); stroke-width: 2.5; }
+        .map-place:hover text { font-weight: 700; }
+        .map-place rect { transition: all 0.2s; }
+        .map-place text { transition: all 0.2s; pointer-events: none; }
+        .map-detail-panel { background: linear-gradient(135deg, rgba(168,72,60,0.08), rgba(184,153,104,0.1)); border: 1px solid var(--cinnabar); border-radius: 10px; padding: 18px 22px; margin-bottom: 16px; }
+        .map-detail-title { font-size: 20px; font-weight: 700; color: var(--cinnabar); margin-bottom: 8px; font-family: "Noto Serif SC", serif; }
+        .map-detail-desc { font-size: 14px; color: var(--ink); line-height: 1.9; }
+        /* 六宫详情 */
+        .six-palaces-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+        .palace-card { background: rgba(255,255,255,0.6); border: 1px solid rgba(184,153,104,0.4); border-radius: 12px; padding: 14px; box-shadow: 0 3px 12px rgba(90,70,40,0.08); }
+        .palace-card-title { font-size: 17px; font-weight: 700; color: var(--cinnabar); text-align: center; margin-bottom: 8px; font-family: "Noto Serif SC", serif; padding-bottom: 6px; border-bottom: 1px solid rgba(184,153,104,0.3); }
+        .palace-card svg { width: 100%; height: auto; display: block; }
+        .palace-residents { margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(184,153,104,0.4); font-size: 12px; color: var(--ink); line-height: 1.8; min-height: 24px; }
+        .palace-residents .resident-tag { display: inline-block; background: rgba(168,72,60,0.1); color: var(--cinnabar); padding: 1px 8px; border-radius: 4px; margin: 2px 3px 2px 0; font-size: 11px; font-weight: 600; }
+        .palace-residents .empty { color: var(--ink-light); font-style: italic; }
+        /* 宫殿下拉框美化 */
+        .palace-select {
+            background: linear-gradient(135deg, #fffdf8, #faf5ea);
+            border: 1px solid rgba(184,153,104,0.5);
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-size: 12px;
+            color: var(--ink);
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8483c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            padding-right: 28px;
+        }
+        .palace-select:hover { border-color: var(--cinnabar); box-shadow: 0 2px 8px rgba(168,72,60,0.12); }
+        .palace-select:focus { outline: none; border-color: var(--cinnabar); box-shadow: 0 0 0 3px rgba(168,72,60,0.1); }
+        .palace-select optgroup { font-weight: 700; color: var(--cinnabar); background: rgba(184,153,104,0.08); }
+        .palace-select option { background: #fffdf8; color: var(--ink); padding: 4px; }
+        @media (max-width: 900px) { .six-palaces-wrap { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .six-palaces-wrap { grid-template-columns: 1fr; } }
+        /* 晋升曲线图 */
+        .promotion-chart { margin-top: 12px; padding: 16px; background: rgba(255,255,255,0.5); border-radius: 8px; border: 1px solid rgba(201,184,150,0.3); }
+        .promotion-chart svg { width: 100%; height: 180px; }
+        .promotion-empty { text-align: center; padding: 30px; color: #bbb; font-size: 13px; }
         /* 上传区域 */
         .upload-area { border: 2px dashed var(--border); border-radius: 10px; padding: 32px 20px; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.4); }
         .upload-area:hover { border-color: var(--celadon); background: rgba(122,158,143,0.05); }
@@ -1374,7 +1425,7 @@
 /* ===== 由 sync.js 自动注入的同步数据 ===== */
 (function(){
   var __ARCHIVE__ = {"concubine":[{"name":"苏若仪","age":"28","birth":"元康二年三月","inDate":"景和元年春","title":"宸","rank":"皇后","family":"太傅之女（正一品）","beauty":9,"talent":12,"physical":"6","sleep":13,"favor":8,"prestige":"9","princess":"1","prince":"1","cumSleep":13,"intro":"（示例档案）累世清贵的苏家长女，自幼受家学熏陶，熟读诗书，性端方持重，于后位之上不怒自威。看似温婉，实则心中自有丘壑，深谙制衡之道。","relations":[{"target":"柳含烟","kind":"同盟","note":"（示例）同为制衡后宫的盟友，彼此心照不宣"}],"rpRecords":[{"time":"景和二年","target":"柳含烟","kind":"同盟","content":"与柳贵妃联手压下后宫流言。"}],"rplog":"景和二年，与柳含烟同盟，与柳贵妃联手压下后宫流言。","lineage":"嫡","familyTree":[{"name":"苏叔明","relation":"父亲","age":48,"personality":"端方","industry":18000,"marital":"已婚","spouse":"陈氏","health":95},{"name":"苏萱","relation":"嫡姐","age":26,"personality":"刻薄","industry":6167,"marital":"已婚","spouse":"朱氏","health":86},{"name":"周氏","relation":"姨娘","age":35,"personality":"刻薄","industry":2550,"marital":"已婚","spouse":"苏叔明","health":95},{"name":"陈氏","relation":"母亲（正室）","age":33,"personality":"从容","industry":3191,"marital":"已婚","spouse":"苏叔明","health":75}],"fatherMerit":0,"fatherSuppressed":false,"moral":0},{"name":"柳含烟","age":"25","birth":"元康五年八月","inDate":"景和二年秋","title":"惠","rank":"贵妃","family":"吏部尚书之女（正三品）","beauty":11,"talent":8,"physical":"6","sleep":"18","favor":10,"prestige":7,"princess":"0","prince":"1","cumSleep":18,"intro":"（示例档案）吏部柳尚书嫡女，八面玲珑，最擅揣摩圣意，恩宠正隆。面上温顺恭谨，内里心机深沉，尤善借刀杀人。","relations":[{"target":"苏若仪","kind":"同盟","note":"（示例）表面同盟，实各怀心思"},{"target":"温如玉","kind":"情敌","note":"（示例）同争恩宠，互有龃龉"}],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":19,"fatherSuppressed":false,"moral":1},{"name":"温如玉","age":"23","birth":"元康七年六月","inDate":"景和三年春","title":"德","rank":"妃","family":"骠骑大将军之女（从一品）","beauty":11,"talent":10,"physical":"6","sleep":"8","favor":6,"prestige":9,"princess":"1","prince":"0","cumSleep":8,"intro":"（示例档案）将门虎女，性爽朗明快，善骑射，不拘小节。于宫中最是护短，也最是记仇。","relations":[{"target":"秦照影","kind":"主仆","note":"（示例）秦贵人依附温妃行事"}],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":0,"fatherSuppressed":false,"moral":0},{"name":"贺兰月","age":"20","birth":"元康十年正月","inDate":"景和三年秋","title":"贤","rank":"嫔","family":"翰林学士之女（正四品）","beauty":8,"talent":9,"physical":"6","sleep":"6","favor":6,"prestige":4,"princess":"0","prince":"0","cumSleep":6,"intro":"（示例档案）翰林贺兰学士之女，清冷孤高，擅丹青翰墨，不屑结党，以才学自恃。","relations":[],"rpRecords":[],"rplog":"","lineage":"庶","familyTree":[],"fatherMerit":0,"fatherSuppressed":false},{"name":"秦照影","age":"19","birth":"元康十一年十一月","inDate":"景和三年秋","title":"","rank":"贵人","family":"通判之女（从六品）","beauty":8,"talent":5,"physical":"6","sleep":"3","favor":3,"prestige":"2","princess":"0","prince":"0","cumSleep":3,"intro":"（示例档案）江南通判之女，小家碧玉，性怯懦，无依无靠，只求在深宫自保。","relations":[{"target":"温如玉","kind":"依附","note":"（示例）依附温妃庇护"}],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":0,"fatherSuppressed":false,"moral":0},{"name":"陆知薇","age":"17","birth":"元康十三年四月","inDate":"景和四年春","title":"","rank":"才人","family":"知县之女（正七品）","beauty":5,"talent":7,"physical":"6","sleep":3,"favor":3,"prestige":1,"princess":"0","prince":"0","cumSleep":3,"intro":"（示例档案）小县官宦之女，貌美而无依，初入宫门，天真未褪，尚未卷入纷争。","relations":[],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":17,"fatherSuppressed":false},{"name":"姜晚晴","age":"16","birth":"元康十四年九月","inDate":"景和四年秋","title":"","rank":"答应","family":"太常博士之女（从七品）","beauty":10,"talent":3,"physical":"6","sleep":1,"favor":5,"prestige":0,"princess":"0","prince":"0","cumSleep":1,"intro":"（示例档案）末等小官之女，天真烂漫，不谙世事，入宫不过数月。","relations":[],"rpRecords":[],"rplog":"","lineage":"嫡","familyTree":[],"fatherMerit":17,"fatherSuppressed":false,"moral":5},{"name":"杨欣","age":"","birth":"","inDate":"","title":"","rank":"答应","family":"商贾之女","lineage":"庶","beauty":0,"talent":7,"physical":6,"sleep":"0","favor":3,"prestige":1,"princess":"","prince":"","intro":"","relations":[],"rpRecords":[],"rplog":"","cumSleep":0,"familyTree":[],"fatherMerit":"","fatherSuppressed":false}],"official":[{"post":"太傅","rank":"正一品","duty":"训导辅弼天子","concubineName":"苏若仪","family":"太傅之女（正一品）","fatherName":"苏叔明","status":"在朝"},{"post":"吏部尚书","rank":"正三品","duty":"掌文官铨选考课","concubineName":"柳含烟","family":"吏部尚书之女（正三品）","fatherName":"柳耀祖","status":"在朝"},{"post":"骠骑大将军","rank":"从一品","duty":"总领禁军、主掌征伐","concubineName":"温如玉","family":"骠骑大将军之女（从一品）","fatherName":"温凤鸣","status":"在朝"},{"post":"翰林学士","rank":"正四品","duty":"掌内廷制诰","concubineName":"贺兰月","family":"翰林学士之女（正四品）","fatherName":"贺崇礼","status":"在朝"},{"post":"通判","rank":"从六品","duty":"监督州务、勾稽钱谷","concubineName":"秦照影","family":"通判之女（从六品）","fatherName":"秦继宗","status":"在朝"},{"post":"知县","rank":"正七品","duty":"掌一县民政赋役刑狱","concubineName":"陆知薇","family":"知县之女（正七品）","fatherName":"陆思齐","status":"在朝"},{"post":"太常博士","rank":"从七品","duty":"掌礼乐谥法礼仪","concubineName":"姜晚晴","family":"太常博士之女（从七品）","fatherName":"姜景恒","status":"在朝"},{"post":"","rank":"","duty":"","concubineName":"杨欣","family":"商贾之女","fatherName":"杨伯钧","status":"在朝"}],"pregnancy":[{"id":"p_1788687187869_655","concubineIdx":0,"concubineName":"苏若仪","conceiveDate":"弘昼元年 · 七月 · 上旬","conceiveTime":"弘昼元年 · 七月 · 上旬","birthDate":"","gender":"","health":100,"dueXun":0,"status":"怀孕中","note":"自然怀孕（累计寝数达 6）"}],"history":[],"scene":[{"id":"s_1788675051241","time":"弘昼元年 · 七月 · 上旬","name":"御花园","type":"花园","status":"开放","people":"","desc":"12","nodes":"12","ladyIdx":5,"ladyName":"陆知薇","gains":{"beauty":0,"talent":1,"favor":0,"prestige":0},"sleepHit":true},{"id":"s_1788675084134","time":"弘昼元年 · 七月 · 上旬","name":"未央宫","type":"宫殿","status":"开放","people":"","desc":"34","nodes":"43","ladyIdx":5,"ladyName":"陆知薇","gains":{"beauty":0,"talent":0,"favor":2,"prestige":0},"sleepHit":true},{"id":"s_1788687187869","time":"弘昼元年 · 七月 · 上旬","name":"御花园","place":"御花园","type":"宫殿","status":"开放","people":"","desc":"","nodes":"","ladyIdx":0,"ladyName":"苏若仪","gains":{"beauty":0,"talent":3,"favor":0,"moral":0},"sleepHit":true},{"id":"s_1788697505755","time":"弘昼元年 · 七月 · 上旬","name":"12","place":"御花园","type":"宫殿","status":"开放","people":"","desc":"","nodes":"","ladyIdx":2,"ladyName":"温如玉","gains":{"beauty":4,"talent":0,"favor":0,"moral":0},"sleepHit":false}],"adventure":[{"id":"a_1788675285566","time":"弘昼元年 · 七月 · 上旬","place":"太庙","type":"偶遇","result":"好感","detail":"太庙祭祀毕，于廊下遇贺兰月虔诚祈愿，见她眼角微红，便轻声宽慰几句。","ladyIdx":2,"ladyName":"温如玉","eventKind":"good","gains":{"beauty":0,"talent":5,"favor":0,"prestige":0},"extraGains":{"beauty":3,"talent":0,"favor":0,"prestige":0},"lady2Name":"柳含烟","sleepHit":false},{"id":"a_1788675307869","time":"弘昼元年 · 七月 · 上旬","place":"上林苑","type":"得宝","result":"物品","detail":"上林苑猎苑草丛中拾得一枝金钗，做工精巧，恰好陆知薇遣人来寻，遂当面归还。\n恰逢前朝传来消息，姜景恒（姜晚晴之父）在前朝得封赏，功勋值 +17。","ladyIdx":6,"ladyName":"姜晚晴","fatherMeritEvent":17,"eventKind":"good","gains":{"beauty":0,"talent":0,"favor":5,"prestige":0},"extraGains":{"beauty":0,"talent":0,"favor":1,"prestige":0},"lady2Name":"贺兰月","sleepHit":true},{"id":"a_1788675875373","time":"弘昼元年 · 七月 · 上旬","place":"含章殿","type":"偶遇","result":"好感","detail":"含章殿廊下偶遇贺兰月抚琴，曲声幽怨，闻之动容，一曲终了相视无言。\n恰逢前朝传来消息，陆思齐（陆知薇之父）在前朝得封赏，功勋值 +17。","ladyIdx":5,"ladyName":"陆知薇","fatherMeritEvent":17,"eventKind":"good","gains":{"beauty":0,"talent":2,"favor":0,"prestige":0},"extraGains":{"beauty":5,"talent":0,"favor":0,"prestige":0},"lady2Name":"姜晚晴","sleepHit":false},{"id":"a_1788687220493","time":"弘昼元年 · 七月 · 上旬","place":"尚食局","type":"识人","result":"人物","detail":"于尚食局与秦照影同桌品茶，谈及宫中糕点的掌故，她谈吐不俗，似有隐情。","ladyIdx":2,"ladyName":"温如玉","eventKind":"good","settleX":{"type":"prestige","dim":null,"prestige":1,"sleep":false},"settleY":{"type":"dim","dim":{"beauty":0,"talent":0,"favor":0,"moral":5},"prestige":0,"sleep":false},"lady2Name":"姜晚晴"},{"id":"a_1788697614947","time":"弘昼元年 · 七月 · 上旬","place":"长乐宫","type":"听闻","result":"剧情","detail":"长乐宫洒扫太监窃窃私语，说贺兰月近日与某位外命妇往来甚密，不知在谋划什么。\n恰逢前朝传来消息，柳耀祖（柳含烟之父）在前朝得封赏，功勋值 +19。","ladyIdx":1,"ladyName":"柳含烟","fatherMeritEvent":19,"eventKind":"good","gains":{"beauty":0,"talent":0,"favor":0,"moral":1},"extraGains":{"beauty":1,"talent":0,"favor":0,"moral":0},"lady2Name":"秦照影","sleepHit":false}],"rank":[{"rank":"尊一品","title":"皇后","limit":1,"requirement":"须有一嗣，恩宠≥8，威望≥8","note":"称本宫，居凤仪殿"},{"rank":"正一品","title":"皇贵妃","limit":1,"requirement":"恩宠≥8，威望≥6，寝数≥20","note":"称本宫，居永宁宫"},{"rank":"从一品","title":"贵妃","limit":2,"requirement":"恩宠≥7，威望≥5，寝数≥15","note":"称本宫，居咸福宫"},{"rank":"正二品","title":"妃","limit":4,"requirement":"恩宠≥6，威望≥4，寝数≥10","note":"称本宫，居各宫主殿"},{"rank":"从二品","title":"嫔","limit":6,"requirement":"恩宠≥5，威望≥3，寝数≥6","note":""},{"rank":"正三品","title":"贵人","limit":99,"requirement":"恩宠≥4，寝数≥4","note":""},{"rank":"从三品","title":"美人","limit":99,"requirement":"恩宠≥3，寝数≥3","note":""},{"rank":"正四品","title":"才人","limit":99,"requirement":"恩宠≥2，寝数≥2","note":""},{"rank":"从四品","title":"常在","limit":99,"requirement":"恩宠≥1，寝数≥1","note":""},{"rank":"正五品","title":"答应","limit":99,"requirement":"入宫即可","note":""}],"journey":[],"globalTime":{"year":"弘昼元年","monthIdx":6,"xunIdx":0,"lastTs":1788784014534}};
-  var __SYNC_TIME__ = "2026/9/7 22:08:21";
+  var __SYNC_TIME__ = "2026/9/8 01:02:51";
   try {
     localStorage.setItem('yuchilao_concubine_data', JSON.stringify(__ARCHIVE__));
     localStorage.setItem('yuchilao_archive_seed_v2', '1');
@@ -1400,6 +1451,7 @@
             <div class="global-time-bar">
                 <span class="gt-label">全局时间</span>
                 <span class="gt-text" id="gtText" title="点击文字即可编辑" onclick="startGlobalTimeEdit()">弘昼元年 · 七月 · 上旬</span>
+                <span class="gt-text" id="gtSolarTerm" style="color:var(--cinnabar);margin-left:8px;font-size:13px;"></span>
                 <span class="gt-edit" id="gtEdit">
                     <input type="text" id="gtYear" class="gt-input" style="width:96px;" placeholder="弘昼元年">
                     <select id="gtMonth" class="gt-input"></select>
@@ -1562,6 +1614,23 @@
                     </div>
                     <div class="card-title">个人历程</div>
                     <div class="card-desc">主角经历与大事记</div>
+                </div>
+                <div class="palace-card" onclick="navigateTo('map')">
+                    <span class="card-corner tl"></span>
+                    <span class="card-corner tr"></span>
+                    <span class="card-corner bl"></span>
+                    <span class="card-corner br"></span>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 48L32 12L56 48H8Z" stroke="#b89968" stroke-width="2" fill="rgba(184,153,104,0.08)"/>
+                            <path d="M20 48V32H44V48" stroke="#b89968" stroke-width="2" fill="rgba(184,153,104,0.06)"/>
+                            <rect x="28" y="36" width="8" height="12" stroke="#a8483c" stroke-width="1.5" fill="rgba(168,72,60,0.1)"/>
+                            <path d="M32 12V6" stroke="#a8483c" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="32" cy="5" r="2" fill="#a8483c"/>
+                        </svg>
+                    </div>
+                    <div class="card-title">皇宫地图</div>
+                    <div class="card-desc">三十六处宫苑点击查看</div>
                 </div>
             </div>
         </section>
@@ -1844,7 +1913,7 @@
                                         <th>时间</th>
                                         <th>对戏对象</th>
                                         <th>关系</th>
-                                        <th>对戏内容</th>
+                                        <th>对戏内容（系统自动判定主题）</th>
                                         <th class="col-action">操作</th>
                                     </tr>
                                 </thead>
@@ -2418,6 +2487,7 @@
                         <span class="journey-attr"><span class="journey-attr-label">恩宠</span><span class="journey-attr-val" id="journeyLadyFavor">—</span></span>
                         <span class="journey-attr"><span class="journey-attr-label">道德</span><span class="journey-attr-val" id="journeyLadyMoral">—</span></span>
                         <span class="journey-attr"><span class="journey-attr-label">威望</span><span class="journey-attr-val" id="journeyLadyPrestige">—</span></span>
+                        <span class="journey-attr"><span class="journey-attr-label">彤史</span><span class="journey-attr-val" id="journeyLadyCumSleep">—</span></span>
                     </div>
                 </div>
             </div>
@@ -2426,6 +2496,11 @@
                 <div class="arch-section-title">关系图谱</div>
                 <p class="arch-section-hint">根据妃嫔档案中的对戏记录自动汇总，按关系分类，颜色区分</p>
                 <div class="relation-graph" id="relationGraph"></div>
+            </div>
+            <!-- 晋升曲线图 -->
+            <div class="arch-section">
+                <div class="arch-section-title">晋升曲线 <span style="font-size:12px;color:var(--ink-light);">（位份变迁时间轴）</span></div>
+                <div class="promotion-chart" id="promotionChart"></div>
             </div>
             <!-- 戏录时间线 -->
             <div class="arch-section">
@@ -2499,49 +2574,109 @@
                 </div>
                 <div class="rp-settlement-total" id="rpSettlementTotal"></div>
             </div>
-            <!-- 原有历程记录 -->
-            <div class="toolbar">
-                <button class="btn btn-primary" onclick="openJourneyForm()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-                    新增历程
+        </section>
+        <!-- ===== 皇宫地图子页面 ===== -->
+        <section class="view" id="view-map">
+            <div class="sub-page-header">
+                <button class="btn back-btn" onclick="navigateTo('home')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                    返回
                 </button>
-                <button class="btn" onclick="saveJourneyData()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
-                    保存记录
-                </button>
-                <span class="toolbar-info" id="journeyCount">共 0 条历程</span>
+                <div class="sub-page-title">皇 宫 地 图</div>
+                <div class="sub-page-title-en">PALACE MAP</div>
             </div>
-            <div class="arch-section" id="journeyForm" style="display:none;">
-                <div class="arch-section-title" id="journeyFormTitle">新增历程</div>
-                <div class="arch-fields">
-                    <div class="arch-field"><label>时间</label>
-                        <input type="text" class="field-input" id="journeyTime" placeholder="如：弘昼元年七月上旬">
-                    </div>
-                    <div class="arch-field"><label>事件标题</label>
-                        <input type="text" class="field-input" id="journeyTitle" placeholder="如：登基大典、南巡、大婚">
-                    </div>
-                    <div class="arch-field"><label>重要程度</label>
-                        <select class="field-input" id="journeyLevel">
-                            <option value="一般">一般</option>
-                            <option value="重要">重要</option>
-                            <option value="重大">重大</option>
-                            <option value="剧变">剧变</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="arch-field" style="margin-top:12px;"><label>历程详情</label>
-                    <textarea class="field-input" id="journeyDetail" rows="4" placeholder="记录事件经过、影响、感悟……"></textarea>
-                </div>
-                <div style="margin-top:16px;text-align:right;">
-                    <button class="btn btn-primary" onclick="submitJourney()">保存</button>
-                    <button class="btn" onclick="cancelJourneyForm()">取消</button>
-                </div>
+            <div class="map-detail-panel" id="mapDetailPanel" style="display:none;">
+                <div class="map-detail-title" id="mapDetailTitle">—</div>
+                <div class="map-detail-desc" id="mapDetailDesc">—</div>
+                <button class="btn" style="margin-top:10px;" onclick="document.getElementById('mapDetailPanel').style.display='none'">关闭</button>
             </div>
-            <div id="journeyTimeline"></div>
-            <div class="empty-state" id="journeyEmpty" style="display:none;">
-                <div class="empty-state-text">尚无个人历程</div>
-                <div class="empty-state-hint">点击上方「新增历程」开始记录</div>
+            <div class="map-svg-wrap">
+                <svg viewBox="0 0 1000 980" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 宫墙 -->
+                    <rect x="10" y="10" width="980" height="960" fill="none" stroke="#8b3a30" stroke-width="4" rx="8"/>
+                    <rect x="20" y="20" width="960" height="940" fill="none" stroke="#b89968" stroke-width="1" stroke-dasharray="4,3" rx="4"/>
+                    <!-- 区域背景 -->
+                    <rect x="35" y="35" width="930" height="100" fill="rgba(184,153,104,0.12)" rx="6"/>
+                    <rect x="35" y="150" width="930" height="80" fill="rgba(122,158,143,0.10)" rx="6"/>
+                    <rect x="35" y="245" width="930" height="120" fill="rgba(168,72,60,0.08)" rx="6"/>
+                    <rect x="35" y="380" width="450" height="95" fill="rgba(139,107,139,0.10)" rx="6"/>
+                    <rect x="515" y="380" width="450" height="95" fill="rgba(90,125,112,0.10)" rx="6"/>
+                    <rect x="35" y="490" width="930" height="90" fill="rgba(184,153,104,0.08)" rx="6"/>
+                    <rect x="35" y="595" width="930" height="130" fill="rgba(122,158,143,0.12)" rx="6"/>
+                    <rect x="35" y="740" width="930" height="210" fill="rgba(168,72,60,0.06)" rx="6"/>
+                    <!-- 区域标题 -->
+                    <text x="50" y="58" font-size="14" fill="#8b3a30" font-weight="700" font-family="Noto Serif SC, serif">前朝理政</text>
+                    <text x="50" y="173" font-size="14" fill="#5a7d70" font-weight="700" font-family="Noto Serif SC, serif">帝王寝殿</text>
+                    <text x="50" y="268" font-size="14" fill="#a8483c" font-weight="700" font-family="Noto Serif SC, serif">后宫寝居</text>
+                    <text x="50" y="403" font-size="14" fill="#8b6b8b" font-weight="700" font-family="Noto Serif SC, serif">太后太妃</text>
+                    <text x="530" y="403" font-size="14" fill="#5a7d70" font-weight="700" font-family="Noto Serif SC, serif">内侍服务</text>
+                    <text x="50" y="513" font-size="14" fill="#8a6d3a" font-weight="700" font-family="Noto Serif SC, serif">文化娱乐</text>
+                    <text x="50" y="618" font-size="14" fill="#5a7d70" font-weight="700" font-family="Noto Serif SC, serif">园林游赏</text>
+                    <text x="50" y="763" font-size="14" fill="#8b3a30" font-weight="700" font-family="Noto Serif SC, serif">其他处所</text>
+                    <!-- 可点击地点组 -->
+                    <g class="map-places">
+                        <!-- 前朝理政 -->
+                        <g class="map-place" onclick="showMapPlace('社稷坛')"><rect x="60" y="70" width="130" height="50" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="125" y="100" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">社稷坛</text></g>
+                        <g class="map-place" onclick="showMapPlace('宣政殿')"><rect x="400" y="65" width="200" height="60" rx="6" fill="#fff5e6" stroke="#a8483c" stroke-width="2"/><text x="500" y="100" text-anchor="middle" font-size="18" fill="#8b3a30" font-weight="700" font-family="Noto Serif SC, serif">宣政殿</text></g>
+                        <g class="map-place" onclick="showMapPlace('保庆殿')"><rect x="810" y="70" width="130" height="50" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="875" y="100" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">保庆殿</text></g>
+                        <!-- 帝王寝殿 -->
+                        <g class="map-place" onclick="showMapPlace('养心殿')"><rect x="150" y="185" width="180" height="40" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="240" y="210" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">养心殿</text></g>
+                        <g class="map-place" onclick="showMapPlace('建章殿')"><rect x="670" y="185" width="180" height="40" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="760" y="210" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">建章殿</text></g>
+                        <!-- 后宫寝居 -->
+                        <g class="map-place" onclick="showMapPlace('凤仪殿')"><rect x="410" y="285" width="180" height="65" rx="6" fill="#fff0f0" stroke="#a8483c" stroke-width="2"/><text x="500" y="323" text-anchor="middle" font-size="18" fill="#8b3a30" font-weight="700" font-family="Noto Serif SC, serif">凤仪殿</text></g>
+                        <g class="map-place" onclick="navigateTo('sixpalaces','west')"><rect x="60" y="290" width="160" height="55" rx="6" fill="#f0e8d8" stroke="#a8483c" stroke-width="2" stroke-dasharray="4,2"/><text x="140" y="323" text-anchor="middle" font-size="16" fill="#8b3a30" font-weight="700" font-family="Noto Serif SC, serif">西六宫 ›</text></g>
+                        <g class="map-place" onclick="navigateTo('sixpalaces','east')"><rect x="780" y="290" width="160" height="55" rx="6" fill="#f0e8d8" stroke="#a8483c" stroke-width="2" stroke-dasharray="4,2"/><text x="860" y="323" text-anchor="middle" font-size="16" fill="#8b3a30" font-weight="700" font-family="Noto Serif SC, serif">东六宫 ›</text></g>
+                        <g class="map-place" onclick="showMapPlace('采薇宫')"><rect x="250" y="295" width="120" height="45" rx="6" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="310" y="322" text-anchor="middle" font-size="12" fill="#6b5d4a" font-family="Noto Serif SC, serif">采薇宫</text></g>
+                        <g class="map-place" onclick="showMapPlace('掖庭')"><rect x="630" y="295" width="120" height="45" rx="6" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="690" y="322" text-anchor="middle" font-size="12" fill="#6b5d4a" font-family="Noto Serif SC, serif">掖庭</text></g>
+                        <!-- 太后太妃 -->
+                        <g class="map-place" onclick="showMapPlace('慈康宫')"><rect x="60" y="420" width="120" height="42" rx="6" fill="#fff" stroke="#8b6b8b" stroke-width="1.5"/><text x="120" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">慈康宫</text></g>
+                        <g class="map-place" onclick="showMapPlace('慈园')"><rect x="200" y="420" width="120" height="42" rx="6" fill="#fff" stroke="#8b6b8b" stroke-width="1.5"/><text x="260" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">慈园</text></g>
+                        <g class="map-place" onclick="showMapPlace('寿康宫')"><rect x="340" y="420" width="120" height="42" rx="6" fill="#fff" stroke="#8b6b8b" stroke-width="1.5"/><text x="400" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">寿康宫</text></g>
+                        <!-- 内侍服务 -->
+                        <g class="map-place" onclick="showMapPlace('御膳房')"><rect x="540" y="420" width="100" height="42" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="590" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">御膳房</text></g>
+                        <g class="map-place" onclick="showMapPlace('绣房')"><rect x="660" y="420" width="100" height="42" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="710" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">绣房</text></g>
+                        <g class="map-place" onclick="showMapPlace('内务府')"><rect x="780" y="420" width="100" height="42" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="830" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">内务府</text></g>
+                        <g class="map-place" onclick="showMapPlace('太医院')"><rect x="540" y="420" width="100" height="42" rx="6" fill="transparent" stroke="transparent"/><text x="590" y="446" text-anchor="middle" font-size="0" fill="transparent"></text></g>
+                        <g class="map-place" onclick="showMapPlace('太医院')"><rect x="880" y="420" width="70" height="42" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="915" y="446" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">太医院</text></g>
+                        <!-- 文化娱乐 -->
+                        <g class="map-place" onclick="showMapPlace('藏书阁')"><rect x="60" y="530" width="155" height="40" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="137" y="555" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">藏书阁</text></g>
+                        <g class="map-place" onclick="showMapPlace('观戏阁')"><rect x="235" y="530" width="155" height="40" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="312" y="555" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">观戏阁</text></g>
+                        <g class="map-place" onclick="showMapPlace('画舫')"><rect x="410" y="530" width="155" height="40" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="487" y="555" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">画舫</text></g>
+                        <g class="map-place" onclick="showMapPlace('幽乐居')"><rect x="585" y="530" width="155" height="40" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="662" y="555" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">幽乐居</text></g>
+                        <g class="map-place" onclick="showMapPlace('月影楼')"><rect x="760" y="530" width="180" height="40" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="850" y="555" text-anchor="middle" font-size="13" fill="#3a3226" font-family="Noto Serif SC, serif">月影楼</text></g>
+                        <!-- 园林游赏 -->
+                        <g class="map-place" onclick="showMapPlace('御花园')"><rect x="60" y="635" width="200" height="75" rx="6" fill="#f0f5e8" stroke="#5a7d70" stroke-width="2"/><text x="160" y="678" text-anchor="middle" font-size="18" fill="#5a7d70" font-weight="700" font-family="Noto Serif SC, serif">御花园</text></g>
+                        <g class="map-place" onclick="showMapPlace('梅园')"><rect x="280" y="635" width="120" height="75" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="340" y="678" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">梅园</text></g>
+                        <g class="map-place" onclick="showMapPlace('寒凉殿')"><rect x="420" y="635" width="120" height="75" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="480" y="678" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">寒凉殿</text></g>
+                        <g class="map-place" onclick="showMapPlace('花圃房')"><rect x="560" y="635" width="120" height="75" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="620" y="678" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">花圃房</text></g>
+                        <g class="map-place" onclick="showMapPlace('珍兽苑')"><rect x="700" y="635" width="120" height="75" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="760" y="678" text-anchor="middle" font-size="14" fill="#3a3226" font-family="Noto Serif SC, serif">珍兽苑</text></g>
+                        <g class="map-place" onclick="showMapPlace('露天池')"><rect x="840" y="635" width="110" height="35" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="895" y="657" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">露天池</text></g>
+                        <g class="map-place" onclick="showMapPlace('垂钓榭')"><rect x="840" y="675" width="110" height="35" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="895" y="697" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">垂钓榭</text></g>
+                        <!-- 其他处所 -->
+                        <g class="map-place" onclick="showMapPlace('奉先殿')"><rect x="60" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#a8483c" stroke-width="1.5"/><text x="112" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">奉先殿</text></g>
+                        <g class="map-place" onclick="showMapPlace('佛堂')"><rect x="185" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#a8483c" stroke-width="1.5"/><text x="237" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">佛堂</text></g>
+                        <g class="map-place" onclick="showMapPlace('冷宫')"><rect x="310" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#a8483c" stroke-width="1.5"/><text x="362" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">冷宫</text></g>
+                        <g class="map-place" onclick="showMapPlace('天牢')"><rect x="435" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#a8483c" stroke-width="1.5"/><text x="487" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">天牢</text></g>
+                        <g class="map-place" onclick="showMapPlace('东宫')"><rect x="560" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="612" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">东宫</text></g>
+                        <g class="map-place" onclick="showMapPlace('重华宫')"><rect x="685" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="737" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">重华宫</text></g>
+                        <g class="map-place" onclick="showMapPlace('校场')"><rect x="810" y="785" width="105" height="38" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="862" y="809" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">校场</text></g>
+                        <g class="map-place" onclick="showMapPlace('围场')"><rect x="60" y="840" width="105" height="38" rx="6" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="112" y="864" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">围场</text></g>
+                        <g class="map-place" onclick="showMapPlace('汤泉宫')"><rect x="185" y="840" width="105" height="38" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="237" y="864" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">汤泉宫</text></g>
+                        <g class="map-place" onclick="showMapPlace('极乐殿')"><rect x="310" y="840" width="105" height="38" rx="6" fill="#fff" stroke="#5a7d70" stroke-width="1.5"/><text x="362" y="864" text-anchor="middle" font-size="12" fill="#3a3226" font-family="Noto Serif SC, serif">极乐殿</text></g>
+                        <g class="map-place" onclick="showMapPlace('寒凉殿')"><rect x="435" y="840" width="105" height="38" rx="6" fill="transparent" stroke="transparent"/><text x="487" y="864" text-anchor="middle" font-size="0" fill="transparent"></text></g>
+                    </g>
+                </svg>
             </div>
+            <p style="text-align:center;font-size:12px;color:var(--ink-light);margin-top:10px;">点击任意宫殿名称，查看该处作用与详情；点击西六宫/东六宫可进入宫苑详情</p>
+        </section>
+        <!-- ===== 六宫详情 ===== -->
+        <section class="view" id="view-sixpalaces">
+            <div class="sub-page-header">
+                <button class="btn btn-ghost" onclick="navigateTo('map')">← 返回皇宫地图</button>
+                <h2 class="sub-page-title" id="sixPalacesTitle">西六宫</h2>
+                <div class="sub-page-title-en">SIX PALACES</div>
+            </div>
+            <div class="six-palaces-wrap" id="sixPalacesWrap"></div>
         </section>
         <!-- ===== 页脚 ===== -->
         <footer class="page-footer">
@@ -2778,6 +2913,11 @@
             concubineList.forEach(c => {
                 if (!c) return;
                 if (c.cumSleep == null) c.cumSleep = parseInt(c.sleep) || 0;
+                // 宫殿迁移：旧值"东西六宫"或不在 PLACES 列表中的值，自动替换为具体六宫宫殿
+                if (!c.palace || c.palace === "东西六宫" || PLACES.indexOf(c.palace) === -1) {
+                    const allSix = WEST_SIX_PALACES.concat(EAST_SIX_PALACES);
+                    c.palace = allSix[Math.floor(Math.random() * allSix.length)];
+                }
                 if (c.talent == null) c.talent = "";
                 if (c.lineage == null) c.lineage = Math.random() < 0.6 ? "嫡" : "庶";
                 if (!Array.isArray(c.familyTree)) c.familyTree = [];
@@ -2796,13 +2936,14 @@
                 if (c.rpRecords.length === 0 && c.rplog && String(c.rplog).trim()) {
                     c.rpRecords = String(c.rplog).split("\n").map(l => l.trim()).filter(Boolean).map(l => ({ time: "", target: "", kind: "", content: l }));
                 }
-                // 新版戏录字段迁移：补齐 theme / quote / type / wordCount
+                // 新版戏录字段迁移：补齐 theme / quote / type / wordCount / uploadDate
                 c.rpRecords.forEach(r => {
                     if (!r) return;
                     if (r.theme == null) r.theme = "";
                     if (r.quote == null) r.quote = "";
                     if (r.type == null) r.type = r.target ? "对戏" : "自戏";
                     if (r.wordCount == null && r.content) r.wordCount = String(r.content).replace(/\s/g, "").length;
+                    if (r.uploadDate == null) r.uploadDate = "未记录日期";
                 });
                 if (c.rpRecords.length && !c.rplog) c.rplog = rpRecordsToText(c.rpRecords);
             });
@@ -2945,7 +3086,7 @@
             }
         }
         // ========== 视图路由 ==========
-        function navigateTo(view) {
+        function navigateTo(view, param) {
             document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
             document.getElementById("view-" + view).classList.add("active");
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2997,8 +3138,15 @@
                 renderRelationGraph();
                 renderRpTimeline();
                 renderRpSettlement();
-                renderJourneyList();
+                renderPromotionChart();
                 document.getElementById("journeySearchDropdown").classList.remove("show");
+            }
+            if (view === "map") {
+                renderMap();
+            }
+            if (view === "sixpalaces") {
+                loadData();
+                renderSixPalaces(param || "west");
             }
         }
         // ========== 妃嫔表渲染 ==========
@@ -3032,9 +3180,35 @@
                     else if (field === "birth") style = ' style="width:120px;"';
                     else if (field === "inDate") style = ' style="width:110px;"';
                     else if (field === "family") style = ' style="width:180px;"';
-                    else if (field === "palace") style = ' style="width:90px;"';
+                    else if (field === "palace") style = ' style="width:150px;"';
                     else if (field === "intro") style = ' style="width:200px;"';
-                    html += '<td><input type="text" value="' + escapeHtml(val) + '"' + style + ' data-idx="' + idx + '" data-field="' + field + '" placeholder="' + FIELD_LABELS[field] + '" oninput="updateField(this)"></td>';
+                    if (field === "palace") {
+                        // 宫殿字段用下拉选择框，六宫宫殿含主殿/侧殿/偏殿/后殿选项，显示完整名称
+                        const hallTypes = ["主殿","侧殿","偏殿","后殿"];
+                        function palaceGroup(palaces, groupName) {
+                            let g = '<optgroup label="' + groupName + '">';
+                            palaces.forEach(p => {
+                                g += '<option value="' + escapeHtml(p) + '"' + (p === val ? ' selected' : '') + '>' + escapeHtml(p) + '（整宫）</option>';
+                                hallTypes.forEach(h => {
+                                    const full = p + h;
+                                    g += '<option value="' + escapeHtml(full) + '"' + (full === val ? ' selected' : '') + '>' + escapeHtml(full) + '</option>';
+                                });
+                            });
+                            g += '</optgroup>';
+                            return g;
+                        }
+                        const otherPlaces = PLACES.filter(p => WEST_SIX_PALACES.indexOf(p) === -1 && EAST_SIX_PALACES.indexOf(p) === -1);
+                        const otherOpts = otherPlaces.map(p => '<option value="' + escapeHtml(p) + '"' + (p === val ? ' selected' : '') + '>' + escapeHtml(p) + '</option>').join("");
+                        const isOldVal = val && PLACES.indexOf(val) === -1 && !val.match(/(主殿|侧殿|偏殿|后殿)$/);
+                        html += '<td><select' + style + ' class="palace-select" data-idx="' + idx + '" data-field="palace" onchange="updateField(this)"><option value="">— 选择宫殿 —</option>' +
+                            palaceGroup(WEST_SIX_PALACES, "西六宫") +
+                            palaceGroup(EAST_SIX_PALACES, "东六宫") +
+                            '<optgroup label="其他处所">' + otherOpts + '</optgroup>' +
+                            (isOldVal ? '<option value="' + escapeHtml(val) + '" selected>' + escapeHtml(val) + '（旧值）</option>' : '') +
+                            '</select></td>';
+                    } else {
+                        html += '<td><input type="text" value="' + escapeHtml(val) + '"' + style + ' data-idx="' + idx + '" data-field="' + field + '" placeholder="' + FIELD_LABELS[field] + '" oninput="updateField(this)"></td>';
+                    }
                 });
                 // 孕期列（动态计算，只读）
                 const pregRec = pregnancyList.find(p => p.concubineIdx === idx && p.status === "怀孕中");
@@ -3757,11 +3931,15 @@
             const kindOptions = RP_KINDS.map(k => '<option value="' + k + '">' + k + '</option>').join("");
             recs.forEach((r, ridx) => {
                 const tr = document.createElement("tr");
+                const themeText = r.theme || inferTheme(r.content || "");
                 tr.innerHTML =
                     '<td><input type="text" value="' + escapeHtml(r.time || "") + '" data-ridx="' + ridx + '" data-rk="time" oninput="updateRpRecord(this)" placeholder="如：景和四年春"></td>' +
                     '<td><select class="rp-select" data-ridx="' + ridx + '" data-rk="target" onchange="updateRpRecord(this)"><option value="">— 选择对戏对象 —</option>' + targetOptions + (r.target ? '<option value="' + escapeHtml(r.target) + '">' + escapeHtml(r.target) + '</option>' : '') + '</select></td>' +
                     '<td><select class="rp-select" data-ridx="' + ridx + '" data-rk="kind" onchange="updateRpRecord(this)"><option value="">— 选择关系 —</option>' + kindOptions + (r.kind ? '<option value="' + escapeHtml(r.kind) + '">' + escapeHtml(r.kind) + '</option>' : '') + '</select></td>' +
-                    '<td><input type="text" class="rp-content" value="' + escapeHtml(r.content || "") + '" data-ridx="' + ridx + '" data-rk="content" oninput="updateRpRecord(this)" placeholder="对戏经过与重要事件"></td>' +
+                    '<td style="text-align:left;padding:4px 8px;">' +
+                        '<div style="font-size:10px;color:var(--cinnabar);font-weight:700;margin-bottom:3px;display:inline-block;background:rgba(168,72,60,0.1);padding:1px 8px;border-radius:3px;border-left:3px solid var(--cinnabar);">📌 ' + escapeHtml(themeText) + '</div>' +
+                        '<input type="text" class="rp-content" value="' + escapeHtml(r.content || "") + '" data-ridx="' + ridx + '" data-rk="content" oninput="updateRpRecord(this)" placeholder="对戏经过与重要事件" style="width:100%;">' +
+                    '</td>' +
                     '<td class="col-action"><button class="row-del-btn" onclick="delRpRecord(' + ridx + ')">删除</button></td>';
                 tbody.appendChild(tr);
                 const selTarget = tr.querySelector('select[data-rk="target"]');
@@ -4739,9 +4917,33 @@
                 persist();
             }
         }
+        // 根据月份和旬计算节气节庆
+        function getSolarTerm(monthIdx, xunIdx) {
+            const m = monthIdx + 1; // 1-12
+            const terms = {
+                1: ["立春", "雨水", "元旦·上元节"],
+                2: ["惊蛰", "春分", "花朝节"],
+                3: ["清明", "谷雨", "上巳·寒食·清明"],
+                4: ["立夏", "小满", ""],
+                5: ["芒种", "夏至", "端午节"],
+                6: ["小暑", "大暑", ""],
+                7: ["立秋", "处暑", "七夕·中元"],
+                8: ["白露", "秋分", "中秋节"],
+                9: ["寒露", "霜降", "重阳节"],
+                10: ["立冬", "小雪", ""],
+                11: ["大雪", "冬至", ""],
+                12: ["小寒", "大寒", "腊八·除夕"]
+            };
+            const arr = terms[m] || ["", "", ""];
+            if (xunIdx === 0) return arr[0] ? "【" + arr[0] + "】" : "";
+            if (xunIdx === 1) return arr[1] ? "【" + arr[1] + "】" : "";
+            return arr[2] ? "【" + arr[2] + "】" : "";
+        }
         function renderGlobalTime() {
             const el = document.getElementById("gtText");
             if (el) el.textContent = globalTimeText();
+            const stEl = document.getElementById("gtSolarTerm");
+            if (stEl) stEl.textContent = getSolarTerm(globalTime.monthIdx, globalTime.xunIdx);
         }
         function startGlobalTimeEdit() {
             const t = document.getElementById("gtText");
@@ -4941,7 +5143,62 @@
         // ========== 寻访奇遇 ==========
         let editingAdvIdx = -1;
         // 宫内地点（踩点系统与寻访奇遇共用，保持同步）
-        const PLACES = ["御花园","太液池畔","未央宫","长乐宫","椒房殿","清宁宫","翠微宫","含章殿","凤仪阁","凝辉堂","瑞霭轩","永巷","掖庭","上林苑","太庙","尚食局","御马监"];
+        const PLACES = ["宣政殿","社稷坛","保庆殿","养心殿","建章殿","凤仪殿","长乐宫","棠梨宫","未央宫","长春宫","寿安宫","万安宫","长安宫","永宁宫","咸阳宫","永安宫","长寿宫","长阳宫","慈康宫","慈园","寿康宫","采薇宫","掖庭","御膳房","绣房","御花园","梅园","寒凉殿","奉先殿","佛堂","冷宫","天牢","内务府","太医院","月影楼","藏书阁","东宫","重华宫","校场","观戏阁","画舫","垂钓榭","围场","汤泉宫","极乐殿","露天池","花圃房","珍兽苑","幽乐居"];
+        // 西六宫 / 东六宫 分组
+        const WEST_SIX_PALACES = ["长乐宫","棠梨宫","未央宫","长春宫","寿安宫","万安宫"];
+        const EAST_SIX_PALACES = ["长安宫","永宁宫","咸阳宫","永安宫","长寿宫","长阳宫"];
+        // 地点描述（用于皇宫地图点击查看）
+        const PLACE_DESCRIPTIONS = {
+            "宣政殿": "皇帝每日上朝处理政务之处",
+            "社稷坛": "重大祭祀活动之地",
+            "保庆殿": "举办大型宴会活动之处",
+            "养心殿": "皇帝书房，也可做寝殿",
+            "建章殿": "皇帝寝宫",
+            "凤仪殿": "皇后寝宫",
+            "长乐宫": "西六宫之一，妃嫔住处，正殿有小厨房",
+            "棠梨宫": "西六宫之一，妃嫔住处，正殿有小厨房",
+            "未央宫": "西六宫之一，妃嫔住处，正殿有小厨房",
+            "长春宫": "西六宫之一，妃嫔住处，正殿有小厨房",
+            "寿安宫": "西六宫之一，妃嫔住处，正殿有小厨房",
+            "万安宫": "西六宫之一，妃嫔住处，正殿有小厨房",
+            "长安宫": "东六宫之一，妃嫔住处，正殿有小厨房",
+            "永宁宫": "东六宫之一，妃嫔住处，正殿有小厨房",
+            "咸阳宫": "东六宫之一，妃嫔住处，正殿有小厨房",
+            "永安宫": "东六宫之一，妃嫔住处，正殿有小厨房",
+            "长寿宫": "东六宫之一，妃嫔住处，正殿有小厨房",
+            "长阳宫": "东六宫之一，妃嫔住处，正殿有小厨房",
+            "慈康宫": "太后寝宫",
+            "慈园": "太后、太妃赏花游玩之地",
+            "寿康宫": "太妃住处",
+            "采薇宫": "新进秀女住处，一屋可住三人",
+            "掖庭": "下等侍女和受罚侍女干粗活之处",
+            "御膳房": "提供各宫膳食以及宴会食物",
+            "绣房": "绣娘刺绣做衣裳之处，妃嫔可请教针线活，主殿娘娘可调动和提拔到身边侍奉",
+            "御花园": "皇上、妃嫔、秀女游玩之地",
+            "梅园": "妃嫔、秀女冬日赏梅之地，皇上可为单独喜爱的妃嫔封园，其他人不得入内",
+            "寒凉殿": "后宫举办家宴之地，平时可赏花喂鱼游玩",
+            "奉先殿": "侍奉先祖灵位，惩罚犯错妃嫔思过之地",
+            "佛堂": "妃嫔祈福、礼佛、忏悔。亦有喇嘛修行尼姑常驻，惩罚或自愿斩断红尘修行之地",
+            "冷宫": "犯错妃嫔惩罚之地",
+            "天牢": "犯错妃嫔、侍女、内官等受刑法之地",
+            "内务府": "各物质调配、采购、储藏；月俸分发之地",
+            "太医院": "各宫诊断医治，才人以下包括才人不得私自宣御医",
+            "月影楼": "能俯瞰整个皇宫面貌，夜观星辰供妃嫔与皇上游玩之地",
+            "藏书阁": "妃嫔、皇子阅览丛书，可抄录借用",
+            "东宫": "立储太子和太子妃妾住处",
+            "重华宫": "皇子与公主住处，亦有学堂",
+            "校场": "皇上、皇子、妃嫔习武练骑射之地",
+            "观戏阁": "妃嫔、皇上观戏之地，亦有梨园戏班和南苑乐伎常驻",
+            "画舫": "由画师为皇上和得殊荣的妃嫔们画像，平时可供皇子、公主、妃嫔学画，有真迹名画供临摹观赏",
+            "垂钓榭": "皇上、妃嫔、皇子、公主垂钓地，夏季可乘凉",
+            "围场": "妃嫔、皇上、皇子、公主习马跑马、打马球举办各种活动之地。若有大臣参与皇上可禁止女眷入内",
+            "汤泉宫": "分室内跟室外的温泉，需皇上特赐和允许才可进入",
+            "极乐殿": "获得特赐在汤泉宫沐浴后可在此休息，也可承恩，若多人特赐可一起前往小聚",
+            "露天池": "室外冬暖夏凉的嬉戏地，妃嫔可自由进入",
+            "花圃房": "由侍女打理的花草，为各宫送花，妃嫔可入内观赏，看中的可让侍女送到自己宫，也可自己栽种",
+            "珍兽苑": "饲养各种比较珍贵的小动物（飞禽走兽），妃嫔可前往观看和照顾。需皇上赏赐的动物方可带回宫中自养",
+            "幽乐居": "下棋、作词、对诗、弹琴、跳舞唱歌谱曲玩乐宴会之地"
+        };
         function fillPlaceSelect(selId, placeholder) {
             const sel = document.getElementById(selId);
             if (!sel) return;
@@ -4967,35 +5224,35 @@
         }
         const RANDOM_ADVENTURES = [
             { type: "偶遇", place: "御花园", detail: "于御花园假山后偶遇{LADY}独自赏梅，风寒露重，眉间似有愁绪，上前攀谈数语。", result: "好感" },
-            { type: "听闻", place: "太液池畔", detail: "于太液池畔听小宫女闲谈，提及{LADY}母家的一桩旧事，言语间似有深意。", result: "剧情" },
-            { type: "得宝", place: "永巷", detail: "在永巷旧库房翻出一枚前朝玉佩，成色温润，正欲细看，恰逢{LADY}路过，道出此物来历。", result: "物品" },
-            { type: "识人", place: "尚食局", detail: "于尚食局与{LADY}同桌品茶，谈及宫中糕点的掌故，她谈吐不俗，似有隐情。", result: "人物" },
-            { type: "遇险", place: "御马监", detail: "御马监马匹受惊冲撞，危急之际{LADY}一声呵斥令马匹安静下来，解了这场惊险。", result: "威望" },
-            { type: "偶遇", place: "含章殿", detail: "含章殿廊下偶遇{LADY}抚琴，曲声幽怨，闻之动容，一曲终了相视无言。", result: "好感" },
+            { type: "听闻", place: "露天池", detail: "于露天池畔听小宫女闲谈，提及{LADY}母家的一桩旧事，言语间似有深意。", result: "剧情" },
+            { type: "得宝", place: "掖庭", detail: "在掖庭旧库房翻出一枚前朝玉佩，成色温润，正欲细看，恰逢{LADY}路过，道出此物来历。", result: "物品" },
+            { type: "识人", place: "御膳房", detail: "于御膳房与{LADY}同桌品茶，谈及宫中糕点的掌故，她谈吐不俗，似有隐情。", result: "人物" },
+            { type: "遇险", place: "围场", detail: "围场马匹受惊冲撞，危急之际{LADY}一声呵斥令马匹安静下来，解了这场惊险。", result: "威望" },
+            { type: "偶遇", place: "养心殿", detail: "养心殿廊下偶遇{LADY}抚琴，曲声幽怨，闻之动容，一曲终了相视无言。", result: "好感" },
             { type: "听闻", place: "掖庭", detail: "掖庭老宫人闲谈，提及先帝时一段后宫秘辛，末了压低声音说与{LADY}母家有关。", result: "剧情" },
-            { type: "得宝", place: "上林苑", detail: "上林苑猎苑草丛中拾得一枝金钗，做工精巧，恰好{LADY}遣人来寻，遂当面归还。", result: "物品" },
-            { type: "识人", place: "清宁宫", detail: "清宁宫外偶遇{LADY}，她怯生生前来问路，模样楚楚可怜，遂引她前往。", result: "人物" },
-            { type: "偶遇", place: "太庙", detail: "太庙祭祀毕，于廊下遇{LADY}虔诚祈愿，见她眼角微红，便轻声宽慰几句。", result: "好感" },
-            { type: "偶遇", place: "未央宫", detail: "未央宫偏殿外，{LADY}正训斥一名犯错的小宫女，声色俱厉却未下重手，见人来便敛了神色。", result: "威望" },
-            { type: "听闻", place: "长乐宫", detail: "长乐宫洒扫太监窃窃私语，说{LADY}近日与某位外命妇往来甚密，不知在谋划什么。", result: "剧情" },
-            { type: "得宝", place: "椒房殿", detail: "椒房殿后苑一株老槐树下掘出一只铜匣，内有手抄佛经一卷，字迹娟秀，{LADY}认出是其姑母旧物。", result: "物品" },
-            { type: "识人", place: "翠微宫", detail: "翠微宫凉亭中，{LADY}正与一位老嬷嬷对弈，棋风凌厉，连赢三局，见人来含笑让座。", result: "人物" },
-            { type: "遇险", place: "凝辉堂", detail: "凝辉堂梁柱年久失修，上方一块匾额摇摇欲坠，{LADY}眼疾手快推开身旁宫人，自己却被擦破了手臂。", result: "好感" },
-            { type: "偶遇", place: "瑞霭轩", detail: "瑞霭轩书斋内，{LADY}正临摹一幅《兰亭序》，笔锋遒劲，不似闺阁手笔，见人来便将纸卷收起。", result: "才情" },
-            { type: "听闻", place: "凤仪阁", detail: "凤仪阁值守宫女私下议论，说{LADY}昨夜被召侍寝，却因水土不服中途退出，惹得圣上不快。", result: "剧情" },
+            { type: "得宝", place: "围场", detail: "围场猎苑草丛中拾得一枝金钗，做工精巧，恰好{LADY}遣人来寻，遂当面归还。", result: "物品" },
+            { type: "识人", place: "寿康宫", detail: "寿康宫外偶遇{LADY}，她怯生生前来问路，模样楚楚可怜，遂引她前往。", result: "人物" },
+            { type: "偶遇", place: "奉先殿", detail: "奉先殿祭祀毕，于廊下遇{LADY}虔诚祈愿，见她眼角微红，便轻声宽慰几句。", result: "好感" },
+            { type: "偶遇", place: "建章殿", detail: "建章殿偏殿外，{LADY}正训斥一名犯错的小宫女，声色俱厉却未下重手，见人来便敛了神色。", result: "威望" },
+            { type: "听闻", place: "保庆殿", detail: "保庆殿洒扫太监窃窃私语，说{LADY}近日与某位外命妇往来甚密，不知在谋划什么。", result: "剧情" },
+            { type: "得宝", place: "凤仪殿", detail: "凤仪殿后苑一株老槐树下掘出一只铜匣，内有手抄佛经一卷，字迹娟秀，{LADY}认出是其姑母旧物。", result: "物品" },
+            { type: "识人", place: "长乐宫", detail: "长乐宫凉亭中，{LADY}正与一位老嬷嬷对弈，棋风凌厉，连赢三局，见人来含笑让座。", result: "人物" },
+            { type: "遇险", place: "幽乐居", detail: "幽乐居梁柱年久失修，上方一块匾额摇摇欲坠，{LADY}眼疾手快推开身旁宫人，自己却被擦破了手臂。", result: "好感" },
+            { type: "偶遇", place: "藏书阁", detail: "藏书阁书斋内，{LADY}正临摹一幅《兰亭序》，笔锋遒劲，不似闺阁手笔，见人来便将纸卷收起。", result: "才情" },
+            { type: "听闻", place: "凤仪殿", detail: "凤仪殿值守宫女私下议论，说{LADY}昨夜被召侍寝，却因水土不服中途退出，惹得圣上不快。", result: "剧情" },
             { type: "得宝", place: "御花园", detail: "御花园锦鲤池边，{LADY}不慎将一支玉簪落入水中，你命人捞起归还，她感激不尽，执意要回赠一盒上好的胭脂。", result: "物品" },
-            { type: "识人", place: "太液池畔", detail: "太液池畔画舫中，{LADY}设宴款待几位交好的妃嫔，席间行酒令，她才思敏捷，句句精妙，满座皆叹服。", result: "才情" },
-            { type: "遇险", place: "尚食局", detail: "尚食局突发小火，浓烟滚滚，{LADY}临危不乱，指挥宫人取水扑救，又命人封锁消息，未惊动圣驾。", result: "威望" },
+            { type: "识人", place: "画舫", detail: "画舫中，{LADY}设宴款待几位交好的妃嫔，席间行酒令，她才思敏捷，句句精妙，满座皆叹服。", result: "才情" },
+            { type: "遇险", place: "御膳房", detail: "御膳房突发小火，浓烟滚滚，{LADY}临危不乱，指挥宫人取水扑救，又命人封锁消息，未惊动圣驾。", result: "威望" },
             { type: "偶遇", place: "掖庭", detail: "掖庭浣衣局外，{LADY}竟亲自为一名生病的老宫女煎药，神色专注，全然不顾位份尊卑，见人来略有些窘。", result: "好感" },
-            { type: "听闻", place: "永巷", detail: "永巷更夫酒后失言，说{LADY}入宫前曾与一位寒门书生有过婚约，后来那人暴病而亡，此事便无人再提。", result: "剧情" },
-            { type: "得宝", place: "含章殿", detail: "含章殿密室中发现一箱前朝书画，其中一幅《百骏图》真伪难辨，{LADY}一眼看出是临摹之作，道出三处破绽。", result: "才情" },
-            { type: "识人", place: "太庙", detail: "太庙斋戒期间，{LADY}三日不食荤腥，每日清晨诵经，其虔诚之心连太常寺官员都暗自称赞。", result: "道德" },
-            { type: "偶遇", place: "上林苑", detail: "上林苑围猎时，{LADY}一身骑装，箭术精准，连发三箭皆中靶心，引得随行侍卫齐声喝彩，她却只是淡淡一笑。", result: "威望" },
-            { type: "听闻", place: "清宁宫", detail: "清宁宫老嬷嬷说，{LADY}当年选秀时本是垫底，只因一首即兴诗作引起先帝注意，才被留牌子，入宫后却一直低调。", result: "才情" },
-            { type: "遇险", place: "御马监", detail: "御马监新进一匹烈马，无人能驯，{LADY}竟亲自上前，以柔克刚，半个时辰便将马驯服，众人皆惊。", result: "威望" },
-            { type: "偶遇", place: "椒房殿", detail: "椒房殿暖阁中，{LADY}正教小皇子认字，耐心细致，声音温柔，与平日冷若冰霜的模样判若两人。", result: "好感" },
-            { type: "得宝", place: "未央宫", detail: "未央宫修缮时，在夹墙中发现一只锦盒，内有一缕青丝和一封未寄出的信，{LADY}见了神色大变，匆匆将盒收起。", result: "剧情" },
-            { type: "识人", place: "长乐宫", detail: "长乐宫赏花宴上，{LADY}以牡丹为题赋诗一首，辞藻华丽却暗含讽喻，座中几位妃嫔听了脸色微变，她却若无其事地饮酒。", result: "才情" }
+            { type: "听闻", place: "内务府", detail: "内务府更夫酒后失言，说{LADY}入宫前曾与一位寒门书生有过婚约，后来那人暴病而亡，此事便无人再提。", result: "剧情" },
+            { type: "得宝", place: "养心殿", detail: "养心殿密室中发现一箱前朝书画，其中一幅《百骏图》真伪难辨，{LADY}一眼看出是临摹之作，道出三处破绽。", result: "才情" },
+            { type: "识人", place: "奉先殿", detail: "奉先殿斋戒期间，{LADY}三日不食荤腥，每日清晨诵经，其虔诚之心连太常寺官员都暗自称赞。", result: "道德" },
+            { type: "偶遇", place: "围场", detail: "围场围猎时，{LADY}一身骑装，箭术精准，连发三箭皆中靶心，引得随行侍卫齐声喝彩，她却只是淡淡一笑。", result: "威望" },
+            { type: "听闻", place: "慈康宫", detail: "慈康宫老嬷嬷说，{LADY}当年选秀时本是垫底，只因一首即兴诗作引起先帝注意，才被留牌子，入宫后却一直低调。", result: "才情" },
+            { type: "遇险", place: "校场", detail: "校场新进一匹烈马，无人能驯，{LADY}竟亲自上前，以柔克刚，半个时辰便将马驯服，众人皆惊。", result: "威望" },
+            { type: "偶遇", place: "重华宫", detail: "重华宫暖阁中，{LADY}正教小皇子认字，耐心细致，声音温柔，与平日冷若冰霜的模样判若两人。", result: "好感" },
+            { type: "得宝", place: "建章殿", detail: "建章殿修缮时，在夹墙中发现一只锦盒，内有一缕青丝和一封未寄出的信，{LADY}见了神色大变，匆匆将盒收起。", result: "剧情" },
+            { type: "识人", place: "保庆殿", detail: "保庆殿赏花宴上，{LADY}以牡丹为题赋诗一首，辞藻华丽却暗含讽喻，座中几位妃嫔听了脸色微变，她却若无其事地饮酒。", result: "才情" }
         ];
         function setSelectValue(selId, val) {
             const sel = document.getElementById(selId);
@@ -5043,7 +5300,7 @@
             "远远望见{LADY}的鸾轿经过，随行宫人捧着一匣新制的时令糕点。",
             "听值夜的小太监提起，{LADY}昨夜在御前侍疾，一夜未眠。",
             "路过廊下，正见{LADY}与几位女史说着话，见人来便住了声。",
-            "太液池畔听小宫女闲谈，提及{LADY}母家的一桩旧事，言语间似有深意。"
+            "御花园畔听小宫女闲谈，提及{LADY}母家的一桩旧事，言语间似有深意。"
         ];
         // 经过文本：把 {LADY} 占位替换为「经历妃嫔」（≠ 目标）；若文本仍无任何妃嫔名，从补句池随机嵌入一位
         function renderAdventureDetailText(detail, appearName, excludeName) {
@@ -5068,6 +5325,7 @@
         function openAdventureForm(idx) {
             editingAdvIdx = (idx != null) ? idx : -1;
             document.getElementById("adventureFormTitle").textContent = editingAdvIdx >= 0 ? "编辑寻访" : "记录寻访";
+            fillPlaceSelect("advPlace");
             populateAdventureLadySelect();
             if (editingAdvIdx >= 0) {
                 const a = adventureList[editingAdvIdx];
@@ -5393,6 +5651,7 @@
             document.getElementById("journeyLadyFavor").textContent = item.favor || "—";
             document.getElementById("journeyLadyMoral").textContent = item.moral || "—";
             document.getElementById("journeyLadyPrestige").textContent = item.prestige || "—";
+            document.getElementById("journeyLadyCumSleep").textContent = item.cumSleep != null ? item.cumSleep : (item.sleep || "—");
         }
         // 搜索妃嫔
         function filterJourneySearch() {
@@ -5459,6 +5718,146 @@
                     (names.length ? names.map(n => '<span class="relation-name" style="border-left:3px solid ' + g.color + ';">' + escapeHtml(n) + '</span>').join("") : '<span style="font-size:11px;color:#bbb;">暂无</span>') +
                     '</div></div>';
             }).join("");
+        }
+        // 渲染晋升曲线图
+        const RANK_LEVELS = { "官女子":1, "答应":2, "常在":3, "贵人":4, "嫔":5, "妃":6, "贵妃":7, "皇贵妃":8, "皇后":9 };
+        function renderPromotionChart() {
+            const item = concubineList[currentJourneyIdx];
+            const container = document.getElementById("promotionChart");
+            if (!item || !container) return;
+            // 收集晋升节点：从历史记录中提取
+            const points = [];
+            // 入宫节点
+            if (item.inDate) {
+                points.push({ time: item.inDate, rank: item.rank || "答应", label: "入宫" });
+            }
+            // 从历史记录中提取晋升/册封事件
+            (historyList || []).forEach(h => {
+                if (!h || !h.detail) return;
+                const detail = String(h.detail);
+                const isRelated = !item.name || detail.indexOf(item.name) >= 0 || (h.concubines && String(h.concubines).indexOf(item.name) >= 0);
+                if (!isRelated) return;
+                const promRe = /(晋升|晋封|册封|进位|升为|擢升)[^，。；]*?(皇后|皇贵妃|贵妃|妃|嫔|贵人|常在|答应|官女子)/;
+                const m = detail.match(promRe);
+                if (m) {
+                    points.push({ time: h.time || "未知", rank: m[2], label: m[1] + m[2] });
+                }
+            });
+            // 当前位份节点
+            if (item.rank) {
+                const exists = points.some(p => p.rank === item.rank && p.label !== "入宫");
+                if (!exists) points.push({ time: "当前", rank: item.rank, label: "现任" + item.rank });
+            }
+            if (points.length === 0) {
+                container.innerHTML = '<div class="promotion-empty">暂无晋升记录</div>';
+                return;
+            }
+            // 去重并排序
+            const unique = [];
+            const seen = new Set();
+            points.forEach(p => {
+                const key = p.time + "_" + p.rank;
+                if (!seen.has(key)) { seen.add(key); unique.push(p); }
+            });
+            unique.sort((a, b) => (a.time || "").localeCompare(b.time || "", "zh-CN"));
+            // 画 SVG 折线图
+            const W = 800, H = 180, padL = 50, padR = 30, padT = 20, padB = 50;
+            const maxLv = 9, minLv = 1;
+            const xStep = unique.length > 1 ? (W - padL - padR) / (unique.length - 1) : 0;
+            const yOf = lv => padT + (maxLv - lv) / (maxLv - minLv) * (H - padT - padB);
+            const xOf = i => padL + i * xStep;
+            // 纵轴位份标签
+            const yLabels = ["皇后","皇贵妃","贵妃","妃","嫔","贵人","常在","答应","官女子"];
+            let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet">';
+            // 网格线
+            for (let lv = 1; lv <= 9; lv++) {
+                const y = yOf(lv);
+                svg += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W - padR) + '" y2="' + y + '" stroke="rgba(184,153,104,0.2)" stroke-dasharray="3,3"/>';
+                svg += '<text x="' + (padL - 6) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10" fill="#8a7b63">' + yLabels[9 - lv] + '</text>';
+            }
+            // 折线
+            if (unique.length > 1) {
+                let pathD = "";
+                unique.forEach((p, i) => {
+                    const lv = RANK_LEVELS[p.rank] || 5;
+                    const x = xOf(i), y = yOf(lv);
+                    pathD += (i === 0 ? "M" : "L") + x + "," + y + " ";
+                });
+                svg += '<path d="' + pathD + '" fill="none" stroke="#a8483c" stroke-width="2.5" stroke-linejoin="round"/>';
+            }
+            // 节点
+            unique.forEach((p, i) => {
+                const lv = RANK_LEVELS[p.rank] || 5;
+                const x = xOf(i), y = yOf(lv);
+                svg += '<circle cx="' + x + '" cy="' + y + '" r="6" fill="#a8483c" stroke="#fff" stroke-width="2"/>';
+                svg += '<text x="' + x + '" y="' + (y - 12) + '" text-anchor="middle" font-size="11" fill="#5a7d70" font-weight="700">' + escapeHtml(p.rank) + '</text>';
+                svg += '<text x="' + x + '" y="' + (H - padB + 16) + '" text-anchor="middle" font-size="10" fill="#6b5d4a">' + escapeHtml(p.time || "?") + '</text>';
+                svg += '<text x="' + x + '" y="' + (H - padB + 30) + '" text-anchor="middle" font-size="9" fill="#a8483c">' + escapeHtml(p.label || "") + '</text>';
+            });
+            svg += '</svg>';
+            container.innerHTML = svg;
+        }
+        // 皇宫地图（静态 SVG，此函数保留用于初始化）
+        function renderMap() {
+            const panel = document.getElementById("mapDetailPanel");
+            if (panel) panel.style.display = "none";
+        }
+        // 六宫详情渲染
+        let currentSixPalacesType = "west";
+        function renderSixPalaces(type) {
+            currentSixPalacesType = type || "west";
+            const isWest = currentSixPalacesType === "west";
+            const palaces = isWest ? WEST_SIX_PALACES : EAST_SIX_PALACES;
+            document.getElementById("sixPalacesTitle").textContent = isWest ? "西六宫" : "东六宫";
+            const wrap = document.getElementById("sixPalacesWrap");
+            if (!wrap) return;
+            // 每个宫殿的 SVG 布局：主殿、侧殿、偏殿、后殿
+            function palaceSvg(palaceName) {
+                return '<svg viewBox="0 0 220 190" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">' +
+                    // 宫墙
+                    '<rect x="5" y="5" width="210" height="180" fill="rgba(184,153,104,0.06)" stroke="#b89968" stroke-width="1.5" rx="4"/>' +
+                    // 偏殿（四角，比后殿大）
+                    '<rect x="12" y="12" width="46" height="40" rx="3" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="35" y="36" text-anchor="middle" font-size="10" fill="#6b5d4a">偏殿</text>' +
+                    '<rect x="162" y="12" width="46" height="40" rx="3" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="185" y="36" text-anchor="middle" font-size="10" fill="#6b5d4a">偏殿</text>' +
+                    '<rect x="12" y="138" width="46" height="40" rx="3" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="35" y="162" text-anchor="middle" font-size="10" fill="#6b5d4a">偏殿</text>' +
+                    '<rect x="162" y="138" width="46" height="40" rx="3" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="185" y="162" text-anchor="middle" font-size="10" fill="#6b5d4a">偏殿</text>' +
+                    // 主殿（上方中间）
+                    '<rect x="66" y="14" width="88" height="36" rx="4" fill="#fff5e6" stroke="#a8483c" stroke-width="1.5"/><text x="110" y="36" text-anchor="middle" font-size="13" fill="#8b3a30" font-weight="700">主殿</text>' +
+                    // 侧殿（左右）
+                    '<rect x="12" y="60" width="28" height="68" rx="3" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="26" y="96" text-anchor="middle" font-size="10" fill="#6b5d4a" transform="rotate(-90,26,96)">侧殿</text>' +
+                    '<rect x="180" y="60" width="28" height="68" rx="3" fill="#fff" stroke="#b89968" stroke-width="1"/><text x="194" y="96" text-anchor="middle" font-size="10" fill="#6b5d4a" transform="rotate(90,194,96)">侧殿</text>' +
+                    // 后殿（下方中间，比偏殿小）
+                    '<rect x="72" y="146" width="76" height="24" rx="4" fill="#fff" stroke="#b89968" stroke-width="1.5"/><text x="110" y="162" text-anchor="middle" font-size="11" fill="#6b5d4a">后殿</text>' +
+                    // 庭院
+                    '<rect x="50" y="56" width="120" height="80" fill="rgba(122,158,143,0.08)" stroke="rgba(122,158,143,0.3)" stroke-width="0.5" stroke-dasharray="3,2"/>' +
+                    '<text x="110" y="100" text-anchor="middle" font-size="11" fill="#5a7d70" font-style="italic">庭 院</text>' +
+                    '</svg>';
+            }
+            wrap.innerHTML = palaces.map(p => {
+                // 前缀匹配："长乐宫主殿"、"长乐宫侧殿"等都算住在长乐宫
+                const residents = concubineList.filter(c => c && c.name && c.palace && (c.palace === p || c.palace.indexOf(p) === 0));
+                const residentHtml = residents.length > 0
+                    ? residents.map(r => {
+                        const hall = r.palace && r.palace !== p ? r.palace.substring(p.length) : "";
+                        return '<span class="resident-tag">' + escapeHtml(r.name) + '（' + escapeHtml(r.rank || "—") + (hall ? '·' + hall : '') + '）</span>';
+                    }).join("")
+                    : '<span class="empty">暂无妃嫔居住</span>';
+                return '<div class="palace-card">' +
+                    '<div class="palace-card-title">' + p + '</div>' +
+                    palaceSvg(p) +
+                    '<div class="palace-residents"><strong>居住：</strong>' + residentHtml + '</div>' +
+                    '</div>';
+            }).join("");
+        }
+        function showMapPlace(name) {
+            const panel = document.getElementById("mapDetailPanel");
+            const titleEl = document.getElementById("mapDetailTitle");
+            const descEl = document.getElementById("mapDetailDesc");
+            if (!panel || !titleEl || !descEl) return;
+            titleEl.textContent = name;
+            descEl.textContent = PLACE_DESCRIPTIONS[name] || "暂无详细介绍";
+            panel.style.display = "block";
+            panel.scrollIntoView({ behavior: "smooth", block: "start" });
         }
         // 渲染戏录时间线
         function renderRpTimeline() {
@@ -5593,7 +5992,8 @@
             }
             item.rpRecords.push({
                 time: time, target: target, kind: kind, content: content,
-                theme: theme, quote: quote, type: type, wordCount: wordCount
+                theme: theme, quote: quote, type: type, wordCount: wordCount,
+                uploadDate: new Date().toLocaleDateString('zh-CN')
             });
             // 威望结算
             let addPrestige = 0;
@@ -5617,42 +6017,79 @@
             document.getElementById("rpParseResult").style.display = "none";
             pendingParseData = null;
         }
-        // ========== 戏录结算 ==========
+        // ========== 戏录结算（按现实日期分组） ==========
         function renderRpSettlement() {
             const item = concubineList[currentJourneyIdx];
             const tbody = document.getElementById("rpSettlementTbody");
             const totalEl = document.getElementById("rpSettlementTotal");
             if (!item || !tbody) return;
             const recs = (item.rpRecords || []).filter(r => r && r.content);
-            let totalDui = 0, totalZi = 0, totalWords = 0, totalPrestige = 0;
-            tbody.innerHTML = recs.map(r => {
-                const wc = r.wordCount || (r.content ? r.content.replace(/\s/g, "").length : 0);
-                const isZi = r.type === "自戏" || !r.target;
-                let prestige;
-                if (isZi) {
-                    prestige = Math.min(400, Math.round(wc / 10 * 0.8));
-                    totalZi += prestige;
-                } else {
-                    prestige = Math.round(wc / 10);
-                    totalDui += prestige;
-                }
-                totalWords += wc;
-                totalPrestige += prestige;
-                return '<tr>' +
-                    '<td>' + escapeHtml(r.time || "—") + '</td>' +
-                    '<td class="' + (isZi ? "settle-type-zi" : "settle-type-dui") + '">' + (isZi ? "自戏" : "对戏") + '</td>' +
-                    '<td>' + escapeHtml(r.target || "—") + '</td>' +
-                    '<td>' + wc + '</td>' +
-                    '<td style="color:var(--cinnabar);font-weight:700;">+' + prestige + '</td>' +
-                    '<td>' + escapeHtml(r.theme || inferTheme(r.content || "")) + '</td>' +
-                    '</tr>';
-            }).join("");
+            // 按上传日期分组
+            const groups = {};
+            recs.forEach(r => {
+                const d = r.uploadDate || "未记录日期";
+                if (!groups[d]) groups[d] = [];
+                groups[d].push(r);
+            });
+            const dates = Object.keys(groups).sort((a, b) => {
+                // 日期排序：未记录日期排最后
+                if (a === "未记录日期") return 1;
+                if (b === "未记录日期") return -1;
+                return a.localeCompare(b, "zh-CN");
+            });
+            let grandDui = 0, grandZi = 0, grandWords = 0, grandPrestige = 0, grandCount = 0;
+            let html = "";
+            dates.forEach(date => {
+                const dayRecs = groups[date];
+                let dayDui = 0, dayZi = 0, dayWords = 0, dayPrestige = 0;
+                // 日期分组标题行
+                html += '<tr style="background:rgba(184,153,104,0.12);"><td colspan="6" style="font-weight:700;color:var(--cinnabar);font-size:14px;padding:10px 14px;">📅 ' + escapeHtml(date) + '（当天 ' + dayRecs.length + ' 条戏录）</td></tr>';
+                // 表头
+                html += '<tr style="background:rgba(122,158,143,0.06);font-size:11px;color:var(--ink-light);"><th style="padding:6px 10px;">游戏内时间</th><th style="padding:6px 10px;">类型</th><th style="padding:6px 10px;">对戏对象</th><th style="padding:6px 10px;">字数</th><th style="padding:6px 10px;">威望</th><th style="padding:6px 10px;">主题</th></tr>';
+                dayRecs.forEach(r => {
+                    const wc = r.wordCount || (r.content ? String(r.content).replace(/\s/g, "").length : 0);
+                    const isZi = r.type === "自戏" || !r.target;
+                    let prestige;
+                    if (isZi) {
+                        prestige = Math.min(400, Math.round(wc / 10 * 0.8));
+                        dayZi += prestige;
+                    } else {
+                        prestige = Math.round(wc / 10);
+                        dayDui += prestige;
+                    }
+                    dayWords += wc;
+                    dayPrestige += prestige;
+                    html += '<tr>' +
+                        '<td>' + escapeHtml(r.time || "—") + '</td>' +
+                        '<td class="' + (isZi ? "settle-type-zi" : "settle-type-dui") + '">' + (isZi ? "自戏" : "对戏") + '</td>' +
+                        '<td>' + escapeHtml(r.target || "—") + '</td>' +
+                        '<td>' + wc + '</td>' +
+                        '<td style="color:var(--cinnabar);font-weight:700;">+' + prestige + '</td>' +
+                        '<td>' + escapeHtml(r.theme || inferTheme(r.content || "")) + '</td>' +
+                        '</tr>';
+                });
+                // 当天小计行
+                html += '<tr style="background:rgba(168,72,60,0.06);"><td colspan="3" style="text-align:right;font-weight:700;color:var(--ink);padding:8px 14px;">当日小计</td>' +
+                    '<td style="font-weight:700;">' + dayWords + '字</td>' +
+                    '<td style="color:var(--cinnabar);font-weight:700;">+' + dayPrestige + '</td>' +
+                    '<td style="font-size:11px;color:var(--ink-light);">对戏+' + dayDui + ' / 自戏+' + dayZi + '</td></tr>';
+                grandDui += dayDui;
+                grandZi += dayZi;
+                grandWords += dayWords;
+                grandPrestige += dayPrestige;
+                grandCount += dayRecs.length;
+            });
+            if (dates.length === 0) {
+                html = '<tr><td colspan="6" style="text-align:center;padding:30px;color:#bbb;">尚无戏录结算记录</td></tr>';
+            }
+            tbody.innerHTML = html;
             totalEl.innerHTML =
-                '<div class="total-item"><span class="total-label">戏录总数</span><span class="total-val">' + recs.length + '</span></div>' +
-                '<div class="total-item"><span class="total-label">总字数</span><span class="total-val">' + totalWords + '</span></div>' +
-                '<div class="total-item"><span class="total-label">对戏威望</span><span class="total-val" style="color:var(--celadon-deep);">+' + totalDui + '</span></div>' +
-                '<div class="total-item"><span class="total-label">自戏威望</span><span class="total-val" style="color:var(--gold);">+' + totalZi + '</span></div>' +
-                '<div class="total-item"><span class="total-label">威望合计</span><span class="total-val">+' + totalPrestige + '</span></div>';
+                '<div class="total-item"><span class="total-label">结算天数</span><span class="total-val">' + dates.length + '</span></div>' +
+                '<div class="total-item"><span class="total-label">戏录总数</span><span class="total-val">' + grandCount + '</span></div>' +
+                '<div class="total-item"><span class="total-label">总字数</span><span class="total-val">' + grandWords + '</span></div>' +
+                '<div class="total-item"><span class="total-label">对戏威望</span><span class="total-val" style="color:var(--celadon-deep);">+' + grandDui + '</span></div>' +
+                '<div class="total-item"><span class="total-label">自戏威望</span><span class="total-val" style="color:var(--gold);">+' + grandZi + '</span></div>' +
+                '<div class="total-item"><span class="total-label">威望合计</span><span class="total-val">+' + grandPrestige + '</span></div>';
         }
         // ========== 初始化 ==========
         loadData();
@@ -5665,7 +6102,7 @@
     </script>
 
 <div id="sync-footer" style="text-align:center;padding:16px 20px 24px;color:#8a7b63;font-size:12px;border-top:1px solid #d4c5a9;margin-top:20px;background:linear-gradient(to bottom, transparent, rgba(184,153,104,0.06));">
-  <span style="color:#a8483c;">●</span> 数据截至 2026/9/7 22:08:21 · 由 sync.js 同步生成<br>
+  <span style="color:#a8483c;">●</span> 数据截至 2026/9/8 01:02:51 · 由 sync.js 同步生成<br>
   <span style="font-size:11px;opacity:0.7;">此处为只读浏览版，加点、晋升、抽取诸事请于编辑端操作后同步</span>
 </div>
 
